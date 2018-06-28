@@ -1,0 +1,750 @@
+10/4/2018
+Downloaded jenkins on windows
+Started jenkins using command prompt and done with the following command to extract the .war file (java -jar jenkins.war). 
+Accessed jenkins through the link −> http://localhost:8080
+Jenkins dashboard is opened by providing user name and password
+Exploring jenkins dashboard/console
+Changed the port from 8080 to 8088 using the command java -jar jenkins.war --httpPort=8088 and accessed jenkins through http://localhost:8088
+Troubleshooting the issue regarding plugins as default plugins are not available in the dashboard.
+
+11/4/2018
+Working with the scenario: Compiling and running a java file in jenkins on Windows i.e., by integrating Jenkins and GitHub (with the GitHub Jenkins Plugin)
+Exploring GitHub repository
+Created an account in github -> https://github.com/ and created a new repository
+Uploaded some files into repository by browsing the fil path and committed the changes.
+Checked the files present in the particular repo whether they are committed or not.
+Modified files which are already uploaded in the repo and again committed
+Deleted files in the repository by selecting particular file to be deleted and again committed
+I have pushed the code into the git repository and committed the changes required, debugging the plugins issue in jenkins and doing documentation parallely.
+
+12/4/2018
+Done with a scenario Git Plugin setup in Jenkins
+Downloaded the latest Git.exe file for Windows and Installed 
+Aaccessing git from windows command prompt without using Github server
+Got to know about Git advantages
+Working with git commands which are used to set a git repository
+
+13/4/2018
+Working with the scenario integrating jenkins and github i.e., Compiling and running a java file in jenkins on Windows
+Successfully pushed the code into git repository
+But unable to push code from git repository to the jenkins because of the following issue.
+  Error occurred due to "SSL certificate problem: self signed certificate in certificate chain"
+To check the issue, I have cloned files from the repository to local environment. But again faced the same issue.
+Unable to access git, so troubleshooting the above issue.
+
+16/4/2018
+Done with the scenario:
+Integrating jenkins and github via github plugin; i.e., Compiling and running a java application in jenkins on Windows
+Created a job in jenkins
+Configured the job with respective details:
+ Gave Project details and GitHub url (as my repository is hosted from github)
+ Selected Source Code Management (SCM) as Git and provided the respective url
+ Next pushed the code; now coming to Build section, opted for add build step 
+ Gave the commands required for compiling and running the application by selecting the option Execute Windows batch command.
+ Saved and Build the job successfully; Now build history is seen by clicking #1 
+ Output is viewed in console output section once job is build successfully.
+ 
+17/4/2018
+Doing research and development on pull request and merge request,
+Attended KT session on NOC (Network Operations Center) and Nagios,
+Done with the issue "SSL certificate problem: self signed certificate in certificate chain",
+Tested Jenkins by picking up an appilcation from git repositroy to integrate,
+Troubleshooting the issue: Class names, are only accepted if annotation processing is explicitly requested.
+
+18/4/2018
+Done with the issue "Class names, are only accepted if annotation processing is explicitly requested",
+Tested the scenario again in Jenkins by picking up an appilcation from git repositroy to integrate - worked fine,
+Done documnetation on the scenarios: Jenkins - Git Setup & Integrating Jenkins - GitHub
+Attended KT session on disk alerts and application alerts
+Getting to know about Network Operations Center, its design and managing NOC
+
+19/4/2018
+Got to know about 
+Booting process in linux
+Steps involved in the booting process
+Commands to Monitor Swap Space Usage in Linux
+Usage of nice and renice commands
+Exploring the git gui 
+Doing r&d on git on windows
+
+20/4/2018
+Attended a meeting on an effective communication,
+Got to know about logrotate,
+Doing r&d on git extension on windows,
+Working with the scenario Jenkins Tomcat setup,
+Troubleshooting the issue "FAIL - Application at context path [/jenkins] could not be started".
+ 
+23/4/2018
+Done with the issue "FAIL - Application at context path [/jenkins] could not be started",
+Configured the following in tomcat web application manager to deploy jenkins.war file,
+Context Path 	
+XML Configuration file URL	
+WAR or Directory URL
+Successfully deployed jenkins.war in the tomcat,
+Troubleshooting the issue "The origin server did not find a current representation for the target resource or is not willing to disclose that one exists" while accessing the jenkins.
+
+24/4/2018
+I have been monitoring mails,
+Started the jenkins application from tomcat, message is displayed as "OK - Started application at context path [/jenkins]",
+Tried to access jenkins through http://localhost:8080/jenkins/ but facing the issue "HTTP Status 404 – Not Found",
+Troubleshooting the above issue,
+Meanwhile trying to deploy jenkins.war directly by uploading WAR file without configuring, but unable to do so because the connection to the server was reset while the page was loading.
+
+25/4/2018
+Checked the opened ports on the system by using netstat command and its options,
+And changed the tomcat port as jenkins and tomcat are running on the same port; some port conflicts occurred,
+Stopped the tomcat server
+Opened Tomcat_Home/conf/server.xml file to edit 
+Looked for the port *8080* in the xml file and replaced with the other available port.
+<Connector port="8080" protocol="HTTP/1.1" 
+connectionTimeout="20000" 
+redirectPort="8443" />
+Wrote playbook for deploying jenkins.war in the tomcat,
+Successfully deployed jenkins.war in the tomcat,
+
+26/4/2018
+Working with the scenario jenkins tomcat setup,
+Modifying the playbook jenkins.war,
+Working with the ansible modules that enables the port 8080 such that jenkins would run on that port,
+Troubleshooting the issues:
+Encountered exception [javax.management.RuntimeOperationsException: Exception invoking method check],
+403 Access Denied - You are not authorized to view this page
+By default the Manager is only accessible from a browser running on the same machine as Tomcat. If you wish to modify this restriction, you'll need to edit the Manager's context.xml file. 
+
+27/4/2018
+Done with the scenario jenkins tomcat setup on windows,
+Installed tomcat on windows,
+Changed the default port of tomcat server in conf/tomcat-users.xml,
+Downloaded jenkins.war,
+Placed the jenkins.war file in webapps folder,
+And successfully deployed jenkins.war application in tomcat web application manager,
+Accessed the jenkins application from the tomcat,
+Working with the documentation for the scenario jenkins-tomcat setup.
+
+2/5/2018
+Done with the documentation jenkins-tomcat setup,
+Done with the scenario, jenkins picks up a java application from local system which is placed in the jenkins workplace an then a job is build,
+Done document on the above scenario,
+Attended KT session on 
+LDAP servers,Active Directory,User creation in Physical box and VM.
+
+3/5/2018
+Went through the LDAP and AD also Git tutorial sessions,
+Installed git on windows and accessed it from git bash,
+After building the project (integrating Jenkins and Git) received the above error on the console output section,
+" ERROR: Error cloning remote repo 'origin' "
+Troubleshooted above issue by performing the below steps:
+1. Go to Manage Jenkins  >  Global Tool Configurations 
+2. Under Git configuration  >  Git installations 
+3. Enter complete path to git executable including git.exe  > Save  > Again build the project
+Done with the job jenkins and github integration and built it in other way through global tool configuration.
+
+4/5/2018
+Went through the jenkins beginner tutorial regarding:
+Scheduling cron jobs in jenkins and 
+About the build trigger configuration with options build periodically and Poll SCM ,
+Done with a scenario Jenkins integration with GIT - SCM successfully,
+Configured Poll SCM in build triggers by scheduling cron job,
+Working with the documentation.
+
+7/5/2018
+Done with the documentation on the scenario - Jenkins integration with GIT - SCM,
+Done with a scenario - scheduling a job in jenkins by using the option build periodically in build trigger section,
+Scheduled job in jenkins by using cron compliant format,
+Completed documentation regarding the scenario.
+
+8/5/2018
+Made some modifications in the documentation on the scenario - Jenkins integration with GIT - SCM,
+Gone through Git and GitHub Beginner Tutorial on Branching and Merging concept,
+Got to know about few commands those are required for Branching and Merging,
+Working with Branching & Merging, made changes in github using git commands through git bash,
+Troubleshooted the issue: 
+! [rejected] master -> master (fetch first)
+error: failed to push some refs to 'git repo url'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+To change repository name > click on particular repository to be changed > goto settings > change the name > click rename
+ 
+9/5/2018 
+Done documentation on the following:
+Git & Git Hub Introduction,
+Installing Git on windows,
+Creating a branch,
+Merging a branch,
+Deleting a branch,
+Working with the scenario i.e., accessing files from a new branch in git repository other than using master branch from jenkins.
+
+10/5/2018
+Gone through the Git and GitHub Beginner Tutorial on how to send email from GitHub,
+Done with the scenario successfully on how to trigger notification email from github whenever there is a change/commit in the project by:
+Adding Email service to get notification to the particular email address and
+Tested and validated the scenario by making some changes in the project to check whether notification is triggered or not,
+Done with the documentation regarding the above mentioned scenario.
+
+11/5/2018
+Gone through the Git and GitHub Beginner Tutorial regarding creating users and managing roles,
+Installed Role-based Authorization strategy plugin,
+Created and Cofigured new users in jenkins dashboard,
+Created and Assigned users to roles,
+Plugin enables user authorization and roles can be defined globally or for particular jobs or nodes selected by regular expressions,
+Controlled user access on projects by creating global role employee and project roles developer and tester.
+
+14/5/2018
+Gone through Git and GitHub Beginner Tutorial on git tags,
+Got to know about: 
+Branching versus tags,
+Tags which allow you to refer to a specific commit in a repository,
+Difference between tags and annotated tags,
+Worked with the git tag commands to create tags and annotated tags also deleted tags,
+Working with Display or show tags.
+
+15/5/2018
+Done documentation on branching versus tags, creation of tags, annotated tags and displaying tags.
+Worked with show or display tags,
+Pushed tags to remote repository,
+Using git commands:
+Deleted tags from local,
+Deleted tags from remote,
+Deleted multiple tags from local and remote.
+
+16/5/2018
+Done documentation on the following:
+Viewing the created tags and pushing them to remote repository,
+Deleting tags from local & remote repository,
+Deleting multiple tags from local and remote,
+Got to know about Checksum number, cryptographic hash number, SHA-1 algorithm,
+Done with a scenario by creating a tag at a particular commit point inorder to take backup in the midst of several commits.
+After creating the tag at the historic point, tags pushed to remote repo only can be seen in releases tab.
+
+17/5/2018
+Done documentation on the scenario creating a tag at a particular commit point inorder to take backup in the midst of several commits,
+Created a tag for the past commit using checksum number and took a backup at a historic point,-
+Done documentation for creating a tag on past commit,
+Went through the tutorial on quick basic navigation and keyboard shortcuts for using GitBash and worked on it,
+Solved the issue as I had a problem that is after exiting git log in windows git bash, text is disappeared on git bash and unable to access it properly.
+
+18/5/2018
+Done doc on using few keyboard shortcuts for using GitBash,
+Pulled changes from Git repository on Git hub Cloud,
+Parallely done doc on the scenario,
+Goning through the git tutorials.
+
+21/5/2018
+Used a Git branch to merge a file by following the below steps:
+Created a branch and checked it out,
+Made a change in the new branch,
+Committed the change to the new branch,
+Integrated that change back into the main branch,
+Deleted the branch you are no longer using.
+Working with the documentation on the above scenario.
+
+22/5/2018
+Got to know about fast-forward merge,
+Done documentation on Merging a branch into master branch using git bash by following steps:
+Creating a new branch and make a change,
+Merging the branch with master > “fast-forward merging”,
+Push your change to GitHub,
+Going through the tutorials Git & Git hub - forking concept.
+
+23/5/2018
+Done with the following scenario,
+Forked an example repository "Spoon-Knife repository"
+Synced the fork by
+a. Setting up Git
+b. Creating a local clone of the fork
+c. Configuring Git to sync your fork with the original Spoon-Knife repository
+
+
+24/5/2018
+Done documentation on the following,
+Forking an example repository "Spoon-Knife repository",
+Syncing the fork by,
+a. Setting up Git
+b. Creating a local clone of the fork
+c. Configuring Git to sync your fork with the original Spoon-Knife repository
+Gone through the doc in GitHub.com on how to create a pull request from a fork,
+Attended KT session on different types of backups and EMC Avamar.
+
+25/5/2018
+Done a scenario by creating a pull request from fork,
+Working with the documentation on the above scenario,
+Got to know how to delete and deleted the forked repo from your GitHub account,
+Goning through the different types of backup operations:
+Full backup
+Incremental backup 
+Differential backup
+
+29/5/2018
+Done with the documentation on
+What exactly is a pull request,
+Creating a pull request from fork and 
+Opened a pull request
+Got to know about git pull vs git and done doc on that
+
+30/5/2018
+Gone through the git stash tutorials,
+Going through the following commands regarding their usage:
+git stash
+git list
+git stash pop
+git stash apply <stashname>
+
+31/5/2018
+Gone through the git fetch tutorials,
+Working with the following commands:
+git fetch
+git merge
+git pull
+Got to know about the differences between git fetch, git merge and git pull,
+Working with the documentation.
+
+
+1/6/2018
+Done with the documentation on the following concepts:
+git pull,
+git fetch,
+git merge &
+git pull vs git fetch
+Going through the tutorials on git rebase.
+
+4/6/2018
+Done with the scenario - stashing changes from one branch to other with ease by following steps:
+Created a new file on master branch,
+Used command git stash to save file temporarily,
+Later moved the file to the new branch,
+Used git stash apply command and commit to save the changes from one branch to the other branch i.e., master to new branch.
+# Once git stash apply command is used - file is viewed on the new branch and can't be seen on the master branch.
+
+5/6/2018
+Done documentation on the scenario - Stashing changes from one branch to other with ease or before checking out a different branch by 
+a. Creating a new file on master branch,
+b. Used git stash save "message" command to save file temporarily,
+c. Moved file to the new branch by using git stash apply command,
+d. And committed to save the changes from one branch to the other branch.
+Solved the issue "error: you need to resolve your current index first the file: needs merge"
+
+6/6/2018
+Done the documentation on the following,
+What is Stashing &
+When to Stash your work
+Done with a scenario by 
+Stashing files using git stash command
+Unstashed files by using git stash pop command on the same branch.
+
+
+7/6/2018
+Got to know about and worked with the following commands:
+git stash pop
+git stash drop
+git stash drop <stash_id>
+git stash clear
+Working with git stash document in detail.
+
+8/6/2018
+Done with the documentation on the following:
+Re-applying the stashed changes,
+Stashing untracked or ignored files,
+Managing multiple stashes,
+Worked with scenario i.e., applying the same stashed changes to multiple branches,
+Getting to know about the procedure on how to unapply the stash.
+
+11/6/2018
+Got to know about and working with the following commands:
+git diff 
+git diff --staged 
+git diff HEAD 
+git diff --color-words
+git diff --word-diff
+git diff --stat
+
+[git diff (working directory differs from staging area)
+git diff --staged (staging area & repository)
+git diff HEAD (compares working tree and the most recent commit)
+git diff id1 id2 (compare btwn two commit coz once committed only ids are generated)\
+git diff --color-words
+git diff --word-diff
+git diff --stat
+
+12/6/2018
+Done with the documentation on:
+How to get commit ID,
+Diff between working directory and staging area,
+Diff between staging area and last commit,
+Diff between last commit and working directory,
+Diff between 2 commits in the same branch,
+How to find what files are changed.
+
+13/6/2018
+Got to about the following and done doc on:
+What happens if you create a new branch?
+How does Git know what branch you’re currently on?
+How to find what commit is current HEAD?
+What is detached HEAD?
+Stashing untracked files using different options.
+
+14/6/2018
+Created a branch from another branch using git bash.
+Worked with git branch commands with various options:
+-a which shows all local and remote branches
+-r which shows only remote branches
+Figured out what branches are on remote by actually using the remote related commands:
+git remote
+git ls-remote
+
+15/6/2018
+Done documentation on the following:
+Creation of a branch from the other branch,
+On git branch commands with various options -a and -r,
+On git remote and git ls-remote to figure out what branches are on remote,
+On git diff with option 'color' for a single file and for multiple files.
+Worked with the commands to configure vimdiff as default git difftool and
+Turn off the prompt globally which prompts always asking to launch the vimdiff or not.
+
+18/6/2018
+Gone through git difftool tutorials
+Worked with the following commands and done doc on them
+vimdiff file1 file2
+git difftool filename before and after staging 
+git checkout filename
+git diff commitid1 commitid2
+git difftool HEAD HEAD^ filename 
+
+19/6/2018
+Worked with the following commands:
+git diff HEAD which compares between the working tree and the HEAD - most recent commit,
+git show commitid 
+ eg: git show b9438 ( first 5 alphanumeric in commit id)
+git revert commitid
+ eg: git revert b9438 ( first 5 alphanumeric in commit id)
+git clean -f used to remove untracked files,
+git clean -xdf even removes all ignored files,
+Got to know about shortcuts in git bash
+Ctrl + Ins (to copy the content from the terminal)
+Shift + Ins (to paste the content from the terminal)
+
+25/6/2018
+Done documentation on the following commands to know their usage:
+git diff HEAD,
+git show commitid,
+git revert commitid,
+git clean -f used to remove untracked files,
+Went through the .gitignore tutorials,
+Working with the .gitignore file,
+Working with the command i.e., git clean -xdf which removes all the  ignored files.
+
+26/6/2018
+Got to know about git ignore patterns where .gitignore uses globbing patterns to match against file names,
+Worked with and done documentation on,
+Ignoring files using .gitignore file by creating a local .gitignore
+1.	In Terminal, navigate to the location of your Git repository,
+2.	Enter touch .gitignore to create a .gitignore file,
+Ignored previously committed file,
+Committed an ignored file.
+
+27/6/2018
+Worked with and got to know about git clean command and its options,
+Done documentation on the following,
+git clean -n
+git clean -f
+git clean -dn
+git clean -df
+Working with the git clean command to remove ignored files
+
+Interactive mode or git clean interactive
+
+ git clean has an "interactive" mode that you can initiate by passing the -i option.
+ 
+$ git clean -di
+Would remove the following items:
+untracked_dir/ untracked_file
+*** Commands ***
+1: clean 2: filter by pattern 3: select by numbers 4: ask each 5: quit 6: help
+What now>
+
+
+The -d option so it will also act upon our untracked_dir. The interactive mode will display a What now> prompt that requests a command to apply to the untracked files. The commands themselves are fairly self explanatory. We'll take a brief look at each in a random order starting with command 6: help. Selecting command 6 will further explain the other commands:
+
+mdodda@GUEST152 MINGW64 /e/MyGitProject (master)
+$ git clean -di
+Would remove the following items:
+  hh1        newdirec/
+*** Commands ***
+    1: clean                2: filter by pattern    3: select by numbers
+    4: ask each             5: quit                 6: help
+What now> 6
+clean               - start cleaning
+filter by pattern   - exclude items from deletion
+select by numbers   - select items to be deleted by numbers
+ask each            - confirm each deletion (like "rm -i")
+quit                - stop cleaning
+help                - this screen
+?                   - help for prompt selection
+
+5: quit
+Is straight forward and will exit the interactive session.
+$ git clean -di
+Would remove the following items:
+  hh1        newdirec/
+*** Commands ***
+    1: clean                2: filter by pattern    3: select by numbers
+    4: ask each             5: quit                 6: help
+What now> 5
+Bye.
+
+1: clean
+Will delete the indicated items. If we were to execute 1: clean at this point untracked_dir/ untracked_file would be removed.
+
+mdodda@GUEST152 MINGW64 /e/MyGitProject (master)
+$ ll
+total 5
+-rw-r--r-- 1 mdodda 1049089  75 Jun 26 21:59 del.txt
+-rw-r--r-- 1 mdodda 1049089  61 Jun 13 20:13 demo-pull
+-rw-r--r-- 1 mdodda 1049089  17 Jun 28 18:38 hh1
+-rw-r--r-- 1 mdodda 1049089  39 Jun 13 20:13 index.html
+drwxr-xr-x 1 mdodda 1049089   0 Jun 28 18:34 newdirec/
+-rw-r--r-- 1 mdodda 1049089 199 Jun 13 20:13 Prog.java
+
+mdodda@GUEST152 MINGW64 /e/MyGitProject (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        hh1
+        newdirec/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+We can find above there is a file and a directory which are untracked.
+
+$ git clean -di
+Would remove the following items:
+  hh1        newdirec/
+*** Commands ***
+    1: clean                2: filter by pattern    3: select by numbers
+    4: ask each             5: quit                 6: help
+What now> 1
+Removing hh1
+Removing newdirec/
+
+4: ask each
+will iterate over each untracked file and display a Y/N prompt for a deletion. It looks like the following:
+
+*** Commands ***
+1: clean 2: filter by pattern 3: select by numbers 4: ask each 5: quit 6: help
+What now> 4
+Remove untracked_dir/ [y/N]? N
+Remove untracked_file [y/N]? N
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Worked with the following commands:
+git diff HEAD which compares between the working tree and the HEAD - most recent commit,
+git show commitid,
+git revert commitid,
+git clean -f used to remove untracked files,
+Got to know about shortcuts in git bash:
+Ctrl + Ins (to copy the content from the terminal)
+Shift + Ins (to paste the content from the terminal)
+Working with the command git clean -xdf even removes all ignored files.
+
+------------------------------------------------------------------------------------------------------------
+tasks: 
+https://help.github.com/enterprise/2.13/user/articles/changing-a-commit-message/
+https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning
+https://www.youtube.com/watch?v=FyAAIHHClqI
+https://www.git-tower.com/learn/git/ebook/en/command-line/branching-merging/stashing > when to stash
+https://git-scm.com/book/en/v1/Git-Tools-Stashing > stashing
+https://git-scm.com/book/en/v2/Git-Branching-Rebasing > rebasing
+https://orga.cat/posts/most-useful-git-commands > all git cmnds
+https://www.youtube.com/watch?v=jza3xtBVjMc > git reset and git revert
+https://www.youtube.com/watch?v=ErJyWO8TGoM > .gitignore
+
+-----------------------------------------------------------------------------------------------------------------------
+
+NOTES:
+git clean -f will remove untracked files,meaning they're gone for good since they aren't stored in the repository.
+Make sure you really want to remove all untracked files before doing this.
+git reset --hard will not remove untracked files, 
+where as git-clean will remove any files from the tracked root directory that are not under Git tracking.
+git log --pretty-oneline
+git log --pretty-oneline | grep NewB > will get all the commits of NewB branch
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+scenarios:
+
+
+doc on git show and revert
+git clean -xdf even removes all ignored files.
+git reset --soft
+git reset --hard
+git reset --mixed
+git reset --hard HEAD
+How to create a branch from previous commit in git
+Creating a Branch from a Stash
+diff tool
+Going through the git diff tutorial.
+git stash unapply - git stash show -p 
+git diff
+.gitignore
+nxt scenario -> https://www.atlassian.com/git/tutorials/saving-changes/git-stash
+git commit --amend > command to change the commit message if not pushed to remote repo
+git reset HEAD s2 -> s2 - filename
+git log -- s2
+deletd s2 and restore it
+about integration
+https://www.atlassian.com/git/tutorials/using-branches/git-merge
+git merge
+how it works
+preparing to merge
+confirm the receiving branch
+fetch latest remote commits --> git fetch
+fast forward merge
+3-way merge
+resolving conflict
+how conflicts are presented
+rebase -----------------------------------------------------------------------------1
+rebase vs merging ------------------------------------------------------------------2
+stash bfore rebase and merge -------------------------------------------------------3
+changing a commit message -> https://help.github.com/enterprise/2.13/user/articles/changing-a-commit-message/
+git log -3 --graph -> shows last three commits
+git cherry pick
+setting private and public repos in github
+no need to give git credentials if it is a public repo
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Summary & note:
+
+Get a repo from somewhere:
+clone
+
+Create a repo from scratch:
+init
+
+Work in linear fashion on the current branch:
+add
+commit
+mv
+rm
+
+Work with branches themselves:
+branch
+checkout
+merge
+
+For working in and with branches:
+reset
+
+Get information about things:
+log
+status
+diff
+show
+
+For syncing your repo to and from others:
+fetch
+pull
+push
+
+For searching history:
+grep
+
+For marking objects, typically commits:
+tag
+
+For being cool (most versioners can't even do these):
+bisect
+rebase
+
+git clone https://github.com/doddam/myRepo.git - Clone a remote repository
+git clone https://github.com/doddam/myRepo.git . - Clone a remote repository in the current directory
+-------------------------------------------------------------------------------------------------------------------
+
+Jenkins:
+
+Context Path (required): /jenkins
+XML Configuration file URL:  (:C:/path/to/context.xml)->/data/Tomcat/conf/context.xml
+WAR or Directory URL: -> path to context.xml  -> (/path/to/bar.war!/) ->  /home/dmanasa/Desktop/jenkins.
+/jenkins
+/data/Tomcat/conf
+/home/dmanasa/Desktop
+https://www.nagios.org/about/overview/ -> nagios working
+
+Task -> create number of child branches and integrate to master branch
+Task -> Configuring GitHub for Jenkins -> https://valuebound.com/resources/blog/continuous-integration-using-jenkins-and-github-to-automate-deployment
+Task -> about git extensions -> https://media.readthedocs.org/pdf/git-extensions-documentation/latest/git-extensions-documentation.pdf
+Task -> setup jenkins.war in tomcat and run it 
+Task -> Deploying a war file from Jenkins to Tomcat(https://www.packtpub.com/mapt/book/virtualization_and_cloud/9781788471060/5/05lvl1sec34/deploying-a-war-file-from-jenkins-to-tomcat)
+link -> http://www.baeldung.com/jenkins-job-schedule
+task -> git hub witheclipse
+
+Reference: https://www.tutorialspoint.com/jenkins/jenkins_git_setup.htm
+https://www.cloudbees.com/blog/using-git-jenkins
+In your Jenkins Dashboard (Home screen), click the Manage Jenkins option on the left hand side.
+github branches in jenkins
+--------------------------------------------------------------------------------------------------------------------
+
+personal:
+pb887766@gmail.com
+
+tablets: 
+may - 6th
+june - 4th
+
+------------------------------------------------------------------------------------------------------------------------
+
+1417178000010632
+ifsc - KVBL0001417
+
+
+116+k+s(rng)
+108r+116+16rnds(rng)
+
+345
+29
+65.50
+84
+34.20
+52.33
+17.30
+29
+4
+29
+
+93
+44.20
+
+
