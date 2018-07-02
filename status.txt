@@ -453,6 +453,73 @@ git clean -dn
 git clean -df
 Working with the git clean command to remove ignored files
 
+28/6/2018
+Done working with the git clean command to remove ignored files using the options -xf,
+Also done document on the above scenario,
+Worked with Interactive mode or git clean interactive mode using various commands in it such as,
+1: clean
+2: filter by pattern
+3: select by numbers
+4: ask each 
+5: quit
+6: help
+Working with the commands filter by pattern and select by numbers.
+
+29/6/2018
+Done document on Interactive mode or git clean interactive mode using various commands in it such as,
+1: clean
+4: ask each 
+5: quit
+6: help
+Working with the following scenarios for changing the commit message in two ways,
+1. Commit has not been pushed online
+2. Amending older or multiple commit messages
+
+2/7/2018
+Worked with the following scenarios and done with the documentation.
+1. Procedures for amending the commit that has not been pushed online
+(i)Changing a commit message that is rewriting the most recent commit message which is not pushed into github repository.
+2. Procedures for amending older commit messages
+(i) Amending the message of the most recently pushed commit.
+(ii)Amending older commit message after a file is pushed into GitHub.
+
+
+pallilu podi:
+pallilu vepi vaini mixi vesi podi cheskovali 
+add salt and karam to that also add velluli and once again bend it
+
+karvepaku nxt talimpu 
+oninions vegaka
+berakayi esi konsepu agi vegaka 
+nxt add pallilu podi and mix it 
+nxt pour water to boli it
+add salt pasupu and masala 
+
+
+Commits / Changing a commit message
+ 
+How can we help?
+
+Changing a commit message
+If a commit message contains unclear, incorrect, or sensitive information, you can amend it locally and push a new commit with a new message to GitHub. You can also amend a commit to add a co-author.
+
+Rewriting the most recent commit message
+You can change the most recent commit message using the git commit --amend command.
+
+In Git, the text of the commit message is part of the commit. Changing the commit message will change the commit ID--i.e., the SHA1 checksum that names the commit. Effectively, you are creating a new commit that replaces the old one.
+
+
+
+In Git, the text of the commit message is part of the commit. Changing the commit message will change the commit ID--i.e., the SHA1 checksum that names the commit. Effectively, you are creating a new commit that replaces the old one.
+
+Commit has not been pushed online
+If the commit only exists in your local repository and has not been pushed to GitHub, you can amend the commit message with the git commit --amend command.
+
+On the command line, navigate to the repository that contains the commit you want to amend.
+Type git commit --amend and press Enter.
+In your text editor, edit the commit message and save the commit. You can also add a co-author by adding a trailer to the commit. For more information, see "Creating a commit with multiple authors."
+
+
 Interactive mode or git clean interactive
 
  git clean has an "interactive" mode that you can initiate by passing the -i option.
@@ -464,8 +531,10 @@ untracked_dir/ untracked_file
 1: clean 2: filter by pattern 3: select by numbers 4: ask each 5: quit 6: help
 What now>
 
-
 The -d option so it will also act upon our untracked_dir. The interactive mode will display a What now> prompt that requests a command to apply to the untracked files. The commands themselves are fairly self explanatory. We'll take a brief look at each in a random order starting with command 6: help. Selecting command 6 will further explain the other commands:
+
+6: help
+Show brief usage of interactive git-clean.
 
 mdodda@GUEST152 MINGW64 /e/MyGitProject (master)
 $ git clean -di
@@ -484,7 +553,7 @@ help                - this screen
 ?                   - help for prompt selection
 
 5: quit
-Is straight forward and will exit the interactive session.
+This lets you quit without do cleaning, will exit the interactive session.
 $ git clean -di
 Would remove the following items:
   hh1        newdirec/
@@ -534,6 +603,7 @@ Removing hh1
 Removing newdirec/
 
 4: ask each
+This will start to clean, and you must confirm one by one in order to delete items.
 will iterate over each untracked file and display a Y/N prompt for a deletion. It looks like the following:
 
 *** Commands ***
@@ -542,7 +612,39 @@ What now> 4
 Remove untracked_dir/ [y/N]? N
 Remove untracked_file [y/N]? N
 
+2: filter by pattern
+This shows the files and directories to be deleted and issues an "Input ignore patterns>>" prompt. You can input space-separated patterns to exclude files and directories from deletion. E.g. "*.c *.h" will excludes files end with ".c" and ".h" from deletion. When you are satisfied with the filtered result, press ENTER (empty) back to the main menu.
+Will display an additional prompt that takes input used to filter the list of untracked files.
 
+mdodda@GUEST152 MINGW64 /e/MyGitProject (master)
+$ git clean -di
+Would remove the following items:
+  bbc/  hjkl  mno
+*** Commands ***
+    1: clean                2: filter by pattern    3: select by numbers
+    4: ask each             5: quit                 6: help
+What now> 2
+  bbc/  hjkl  mno
+Input ignore patterns>> m*
+  bbc/  hjkl
+Input ignore patterns>>
+
+3: select by numbers
+This shows the files and directories to be deleted and issues an "Select items to delete>>" prompt. When the prompt ends with double >> like this, you can make more than one selection, concatenated with whitespace or comma. Also you can say ranges. E.g. "2-5 7,9" to choose 2,3,4,5,7,9 from the list. If the second number in a range is omitted, all remaining items are selected. E.g. "7-" to choose 7,8,9 from the list. You can say * to choose everything. Also when you are satisfied with the filtered result, press ENTER (empty) back to the main menu.
+
+
+
+edit f1
+e f2
+e f3
+
+					mixed reset - default reset
+
+git add
+
+                      soft reset - undo command
+	 
+git commit -m " "
 
 
 
@@ -588,6 +690,7 @@ https://git-scm.com/book/en/v2/Git-Branching-Rebasing > rebasing
 https://orga.cat/posts/most-useful-git-commands > all git cmnds
 https://www.youtube.com/watch?v=jza3xtBVjMc > git reset and git revert
 https://www.youtube.com/watch?v=ErJyWO8TGoM > .gitignore
+https://gettinggit.com/learn > all the concepts category wise
 
 -----------------------------------------------------------------------------------------------------------------------
 
@@ -605,9 +708,7 @@ git log --pretty-oneline | grep NewB > will get all the commits of NewB branch
 
 scenarios:
 
-
-doc on git show and revert
-git clean -xdf even removes all ignored files.
+interactive rebase
 git reset --soft
 git reset --hard
 git reset --mixed
@@ -635,7 +736,7 @@ fast forward merge
 3-way merge
 resolving conflict
 how conflicts are presented
-rebase -----------------------------------------------------------------------------1
+rebase -----------------------------------------------------------------------------1 https://superuser.com/questions/751699/is-there-a-way-to-edit-a-commit-message-in-github/751909
 rebase vs merging ------------------------------------------------------------------2
 stash bfore rebase and merge -------------------------------------------------------3
 changing a commit message -> https://help.github.com/enterprise/2.13/user/articles/changing-a-commit-message/
