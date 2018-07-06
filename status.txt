@@ -483,155 +483,35 @@ Worked with the following scenarios and done with the documentation.
 (i) Amending the message of the most recently pushed commit.
 (ii)Amending older commit message after a file is pushed into GitHub.
 
+3/7/2018
+Worked with the following interactive rebase commands 
+pick which will keep the commit.
+reword allows to edit the commit message.
+edit will pause the rebase process so you can make more changes to the commit.
+squash will condense the commit into the previous commit and let you edit the commit message.
+fixup will condense the commit into the previous commit without editing the commit message.
+drop will remove the commit or you can simply delete the line from the file.
 
-pallilu podi:
-pallilu vepi vaini mixi vesi podi cheskovali 
-add salt and karam to that also add velluli and once again bend it
+5/7/2018
+Done documentation on the following,
+What is git rebase?
+what is the usage of git rebase?
+Use of the git interactive rebase command,
+$ git rebase -i HEAD~3
+Usage of the interactive rebase commands,
+pick
+reword
+exit
 
-karvepaku nxt talimpu 
-oninions vegaka
-berakayi esi konsepu agi vegaka 
-nxt add pallilu podi and mix it 
-nxt pour water to boli it
-add salt pasupu and masala 
+6/7/2018
+Done documentation on interactive rebase commands,
+squash
+exec
+drop
+Git rebase interactive drop vs deleting the commit line
 
-
-Commits / Changing a commit message
- 
-How can we help?
-
-Changing a commit message
-If a commit message contains unclear, incorrect, or sensitive information, you can amend it locally and push a new commit with a new message to GitHub. You can also amend a commit to add a co-author.
-
-Rewriting the most recent commit message
-You can change the most recent commit message using the git commit --amend command.
-
-In Git, the text of the commit message is part of the commit. Changing the commit message will change the commit ID--i.e., the SHA1 checksum that names the commit. Effectively, you are creating a new commit that replaces the old one.
-
-
-
-In Git, the text of the commit message is part of the commit. Changing the commit message will change the commit ID--i.e., the SHA1 checksum that names the commit. Effectively, you are creating a new commit that replaces the old one.
-
-Commit has not been pushed online
-If the commit only exists in your local repository and has not been pushed to GitHub, you can amend the commit message with the git commit --amend command.
-
-On the command line, navigate to the repository that contains the commit you want to amend.
-Type git commit --amend and press Enter.
-In your text editor, edit the commit message and save the commit. You can also add a co-author by adding a trailer to the commit. For more information, see "Creating a commit with multiple authors."
-
-
-Interactive mode or git clean interactive
-
- git clean has an "interactive" mode that you can initiate by passing the -i option.
- 
-$ git clean -di
-Would remove the following items:
-untracked_dir/ untracked_file
-*** Commands ***
-1: clean 2: filter by pattern 3: select by numbers 4: ask each 5: quit 6: help
-What now>
-
-The -d option so it will also act upon our untracked_dir. The interactive mode will display a What now> prompt that requests a command to apply to the untracked files. The commands themselves are fairly self explanatory. We'll take a brief look at each in a random order starting with command 6: help. Selecting command 6 will further explain the other commands:
-
-6: help
-Show brief usage of interactive git-clean.
-
-mdodda@GUEST152 MINGW64 /e/MyGitProject (master)
-$ git clean -di
-Would remove the following items:
-  hh1        newdirec/
-*** Commands ***
-    1: clean                2: filter by pattern    3: select by numbers
-    4: ask each             5: quit                 6: help
-What now> 6
-clean               - start cleaning
-filter by pattern   - exclude items from deletion
-select by numbers   - select items to be deleted by numbers
-ask each            - confirm each deletion (like "rm -i")
-quit                - stop cleaning
-help                - this screen
-?                   - help for prompt selection
-
-5: quit
-This lets you quit without do cleaning, will exit the interactive session.
-$ git clean -di
-Would remove the following items:
-  hh1        newdirec/
-*** Commands ***
-    1: clean                2: filter by pattern    3: select by numbers
-    4: ask each             5: quit                 6: help
-What now> 5
-Bye.
-
-1: clean
-Will delete the indicated items. If we were to execute 1: clean at this point untracked_dir/ untracked_file would be removed.
-
-mdodda@GUEST152 MINGW64 /e/MyGitProject (master)
-$ ll
-total 5
--rw-r--r-- 1 mdodda 1049089  75 Jun 26 21:59 del.txt
--rw-r--r-- 1 mdodda 1049089  61 Jun 13 20:13 demo-pull
--rw-r--r-- 1 mdodda 1049089  17 Jun 28 18:38 hh1
--rw-r--r-- 1 mdodda 1049089  39 Jun 13 20:13 index.html
-drwxr-xr-x 1 mdodda 1049089   0 Jun 28 18:34 newdirec/
--rw-r--r-- 1 mdodda 1049089 199 Jun 13 20:13 Prog.java
-
-mdodda@GUEST152 MINGW64 /e/MyGitProject (master)
-$ git status
-On branch master
-Your branch is ahead of 'origin/master' by 4 commits.
-  (use "git push" to publish your local commits)
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-        hh1
-        newdirec/
-
-nothing added to commit but untracked files present (use "git add" to track)
-
-We can find above there is a file and a directory which are untracked.
-
-$ git clean -di
-Would remove the following items:
-  hh1        newdirec/
-*** Commands ***
-    1: clean                2: filter by pattern    3: select by numbers
-    4: ask each             5: quit                 6: help
-What now> 1
-Removing hh1
-Removing newdirec/
-
-4: ask each
-This will start to clean, and you must confirm one by one in order to delete items.
-will iterate over each untracked file and display a Y/N prompt for a deletion. It looks like the following:
-
-*** Commands ***
-1: clean 2: filter by pattern 3: select by numbers 4: ask each 5: quit 6: help
-What now> 4
-Remove untracked_dir/ [y/N]? N
-Remove untracked_file [y/N]? N
-
-2: filter by pattern
-This shows the files and directories to be deleted and issues an "Input ignore patterns>>" prompt. You can input space-separated patterns to exclude files and directories from deletion. E.g. "*.c *.h" will excludes files end with ".c" and ".h" from deletion. When you are satisfied with the filtered result, press ENTER (empty) back to the main menu.
-Will display an additional prompt that takes input used to filter the list of untracked files.
-
-mdodda@GUEST152 MINGW64 /e/MyGitProject (master)
-$ git clean -di
-Would remove the following items:
-  bbc/  hjkl  mno
-*** Commands ***
-    1: clean                2: filter by pattern    3: select by numbers
-    4: ask each             5: quit                 6: help
-What now> 2
-  bbc/  hjkl  mno
-Input ignore patterns>> m*
-  bbc/  hjkl
-Input ignore patterns>>
-
-3: select by numbers
-This shows the files and directories to be deleted and issues an "Select items to delete>>" prompt. When the prompt ends with double >> like this, you can make more than one selection, concatenated with whitespace or comma. Also you can say ranges. E.g. "2-5 7,9" to choose 2,3,4,5,7,9 from the list. If the second number in a range is omitted, all remaining items are selected. E.g. "7-" to choose 7,8,9 from the list. You can say * to choose everything. Also when you are satisfied with the filtered result, press ENTER (empty) back to the main menu.
-
+Marking a commit as drop is the same as deleting the line.
+If you remove a line here THAT COMMIT WILL BE LOST.
 
 
 edit f1
@@ -646,25 +526,7 @@ git add
 	 
 git commit -m " "
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+111111111111111111111111111111111
 
 
 
@@ -702,13 +564,15 @@ where as git-clean will remove any files from the tracked root directory that ar
 git log --pretty-oneline
 git log --pretty-oneline | grep NewB > will get all the commits of NewB branch
 
+
 ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 scenarios:
 
-interactive rebase
+rebase indepth > https://wilsonmar.github.io/git-rebase/
+git reflog > https://www.atlassian.com/git/tutorials/rewriting-history
+git reflog --relative-date
+git bisect
+interactive rebase doc
 git reset --soft
 git reset --hard
 git reset --mixed
@@ -790,6 +654,81 @@ For being cool (most versioners can't even do these):
 bisect
 rebase
 
+What is git rebase?
+Rebasing is the process of moving or combining a sequence of commits to a new base commit.
+
+Usage
+The primary reason for rebasing is to maintain a linear project history.
+
+pick (p for short) is the default action. In this case it would reapply the commit as is, no changes in its contents or message. Saving (and executing) this file would make no changes to the repository.
+
+If I say reword (r for short) in a commit I want to edit:
+
+pick 07c5abd Introduce OpenPGP and teach basic usage
+pick de9b1eb Fix PostChecker::Post#urls
+r 3e7ee36 Hey kids, stop all the highlighting
+pick fa20af3 git interactive rebase, squash, amend
+When I save and quit the editor, git will follow the described commands, landing myself into the editor again, as if I had amended commit 3e7ee36. I edit that commit message, save and quit the editor, and here is the output:
+
+robots.thoughtbot.com tc-git-rebase % git rebase -i HEAD~4
+[detached HEAD dd62a66] Stop all the highlighting
+ Author: Caleb Thompson
+ Date: Fri Oct 31 10:52:26 2014 -0500
+ 2 files changed, 39 insertions(+), 42 deletions(-)
+Successfully rebased and updated refs/heads/tc-git-rebase.
+Now Caleb says in his commit message “Stop all the highlighting”, whether you are a kid or not.
+
+You should see a file displayed by your default editor. It should contain a list of commits made:
+
+pick 07e03c2 add 2.txt
+pick 5a71aa8 add 3.txt
+pick d693749 add 4.txt
+ 
+# Rebase 785d03b..d693749 onto 785d03b (3 commands)
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+# d, drop = remove commit
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+NOTE: Commit ids such as “07e03c2” are a stand-in for whatever commit id Git creates for each specific commit.
+
+Fixup or 'f' has the same combining effect as squash. Unlike squash, fixup commits will not interrupt rebase playback to open an editor to combine commit messages. The commits marked 'f' will have their messages discarded in-favor of the previous commit's message.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 git clone https://github.com/doddam/myRepo.git - Clone a remote repository
 git clone https://github.com/doddam/myRepo.git . - Clone a remote repository in the current directory
 -------------------------------------------------------------------------------------------------------------------
@@ -811,6 +750,7 @@ Task -> setup jenkins.war in tomcat and run it
 Task -> Deploying a war file from Jenkins to Tomcat(https://www.packtpub.com/mapt/book/virtualization_and_cloud/9781788471060/5/05lvl1sec34/deploying-a-war-file-from-jenkins-to-tomcat)
 link -> http://www.baeldung.com/jenkins-job-schedule
 task -> git hub witheclipse
+https://wilsonmar.github.io/git-rebase/
 
 Reference: https://www.tutorialspoint.com/jenkins/jenkins_git_setup.htm
 https://www.cloudbees.com/blog/using-git-jenkins
@@ -833,19 +773,3 @@ ifsc - KVBL0001417
 
 116+k+s(rng)
 108r+116+16rnds(rng)
-
-345
-29
-65.50
-84
-34.20
-52.33
-17.30
-29
-4
-29
-
-93
-44.20
-
-
