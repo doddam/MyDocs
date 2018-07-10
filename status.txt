@@ -504,14 +504,33 @@ reword
 exit
 
 6/7/2018
-Done documentation on interactive rebase commands,
-squash
-exec
-drop
-Git rebase interactive drop vs deleting the commit line
+Done documentation on the following,
+Normal Rebase vs Interactive Rebase,
+squash which is a interactive rebase command,
+drop also an interactive rebase command,
+Git rebase interactive drop vs deleting the commit line,
+Working with git rebase exec command.
 
-Marking a commit as drop is the same as deleting the line.
-If you remove a line here THAT COMMIT WILL BE LOST.
+9/7/2018
+Got to know about the following and working with the documentation,
+What is reset,
+Three trees of git,
+Different command line arguments such as:
+- soft only changes HEAD, but doesn’t change staged files in index or working files,
+- mixed moves HEAD and updates the index with the contents of the revision to which HEAD now points,
+- hard moves HEAD and updates the index and working directory—this is the only version of reset that can cause data loss.
+
+Done documentation on the following,
+What is reset,
+Three trees of git,
+
+
+Different command line arguments such as:
+- soft only changes HEAD, but doesn’t change staged files in index or working files,
+- mixed moves HEAD and updates the index with the contents of the revision to which HEAD now points,
+- hard moves HEAD and updates the index and working directory—this is the only version of reset that can cause data loss.
+
+
 
 
 edit f1
@@ -568,16 +587,19 @@ git log --pretty-oneline | grep NewB > will get all the commits of NewB branch
 ------------------------------------------------------------------------------------------------------------------------------------
 scenarios:
 
+diff btw reset n revert, chckout n reset, head n head~2(diagramatically)
+need to work with "git exec rebase command "
+exec,onto,nooff,todolist
 rebase indepth > https://wilsonmar.github.io/git-rebase/
 git reflog > https://www.atlassian.com/git/tutorials/rewriting-history
 git reflog --relative-date
 git bisect
-interactive rebase doc
 git reset --soft
 git reset --hard
 git reset --mixed
 git reset --hard HEAD
 How to create a branch from previous commit in git
+Creating a Branch from a Stash
 Creating a Branch from a Stash
 diff tool
 Going through the git diff tutorial.
@@ -773,3 +795,67 @@ ifsc - KVBL0001417
 
 116+k+s(rng)
 108r+116+16rnds(rng)
+
+
+To properly understand git reset usage, we must first understand Git's internal state management systems. Sometimes these mechanisms are called Git's "three trees". 
+
+To review, git reset is a powerful command that is used to undo local changes to the state of a Git repo. Git reset operates on "The Three Trees of Git". These trees are the Commit History ( HEAD ), the Staging Index, and the Working Directory. ... The options --soft, --mixed , and --hard can be passed to git reset .
+
+
+git reset, moves both the HEAD and branch refs to the specified commit.
+  
+ 
+Attended few sessions on DevOps tool that is Ansible, myself went indepth about the tool and worked with which is an open source software that automates configuration management and application deployment that connects via SSH.
+ 
+We use yaml scripting in Ansible playbooks where the script is written once and can be run on multiple servers at a time. Used for configuration mangement and appication deployments.
+
+YAML, YAML Ain't Markup Language is a human-readable data serialization language.  Learned and wrote YAML scripts which are used in writing Ansible playbooks used for configuration management and application deployments.
+
+The working directory
+The Working Directory, this tree is in sync with the local filesystem i.e., the current set of files you’re working on in your file system.
+
+Staging index
+This tree is tracking Working Directory changes, that have been promoted with git add, to be stored in the next commit. This tree is a complex internal caching mechanism. Git generally tries to hide the implementation details of the Staging Index from the user.
+
+Commit history
+The final tree is the Commit History. The git commit command adds changes to a permanent snapshot that lives in the Commit History. This snapshot also includes the state of the Staging Index at the time of commit.
+
+HEAD
+This is an alias for the tip of the current branch, which is the most recent commit you have made to that branch.
+
+when you do a git add, it stages the file in the index, and Git says “oh, okay, now your working copy and index match, but those are both different than HEAD.”
+
+When you then perform a git commit, Git creates a new commit that HEAD now points to and the status of the index and working copy match it so Git’s happy once more.
+
+Reset
+If you just look at the reset command by itself, all it does is reset HEAD (the tip of the current branch) to another commit. For instance, say we have a branch (the name doesn’t matter, so let’s call this one “super-duper-feature”) and it looks like so:
+
+If we perform:
+
+> git reset HEAD
+
+… nothing happens. This is because we tell git to reset this branch to HEAD, which is where it already is. But if we do:
+
+> git reset HEAD~1
+
+(HEAD~1 is shorthand case for “the commit right before HEAD”, or put differently “HEAD’s parent”) our branch now looks like so:
+
+If we start at the latest commit again and do:
+
+> git reset HEAD~2
+
+our branch would look like so:
+
+Again, all it does on a basic level is move HEAD to another commit.
+
+git reset is similar in behavior to git checkout. 
+
+Where git checkout solely operates on the HEAD ref pointer, git reset will move the HEAD ref pointer and the current branch ref pointer. To better demonstrate this behavior consider the following example:
+
+https://www.msn.com/en-in/health/medical/25-secret-tips-to-stop-the-ageing-process/ss-AA99Muh?li=AAgg4jn#image=3
+
+
+
+
+ 
+ 
