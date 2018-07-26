@@ -520,45 +520,111 @@ Different command line arguments such as:
 - mixed moves HEAD and updates the index with the contents of the revision to which HEAD now points,
 - hard moves HEAD and updates the index and working directory—this is the only version of reset that can cause data loss.
 
+10/7/2018
 Done documentation on the following,
-What is reset,
-Three trees of git,
+What is reset and three trees of git,
+What happens if the following commands are performed,
+git reset HEAD
+git reset HEAD~1
+git reset HEAD~2
+Working of reset,
+Difference between git checkout and git reset
+
+11/7/2018
+Got to know about the following:
+Scope of git reset modes,
+All the options available for commit and reset,
+Worked with the following examples:
+Undo add,
+Undo a commit,
+Undo a merge or pull,
+Reset a single file in the index.
+
+12/7/2018
+Done documentation on the git reset modes,
+git reset --soft
+git reset --mixed
+git reset --hard
+git reset --merge
+How to reset a single file using command git reset -- filename
+
+13/7/2018
+Got to know the difference about HEAD vs ORIG_HEAD,
+Done with the following examples:
+Undo commits permanently,
+Undo a commit and redo,
+Undoing a merge or pull inside a dirty working tree,
+Working with the scenario on how to deal with an interrupted workflow.
+
+16/7/2018
+Got to know about snapshot,
+Done working with the scenario and also document on how to deal with an interrupted workflow,
+Worked with the command $ git revert -n commit_id
+Also got to know the difference between the commands,
+$ git revert commit_id and $ git revert -n commit_id,
+Gone through the tutorial on Undoing vs Reverting vs Resetting.
+
+17/7/2018
+Done documentation on the following,
+Undoing the code changes for a single file,
+Undoing the code changes for multiple files at a time,
+Committing code changes directly using the command $ git revert commit_id,
+Also committing code changes explicilty using the command with the option -n, $ git revert -n commit_id,
+Resetting the code changes and moving to the previous commit history.
+
+18/7/2018
+Done document on the following,
+Revert vs Reset,
+Reset can be used in different scenarios,
+Scenario-1: When you have made some changes and you no longer wanted them to be committed you just wanted to go back to the older clean state
+Scenario-2: When you wanted to go to two commits back
+Scenario-3: When you are doing git pull. It might result in merging errors. In this case you might just want to get rid of the mess, then you can simply use 
+Scenario-4: You might have added a file to commit using  git add abc.c but later you realized you do not want to add then you can get it back
+Going through the tutorials regarding git cherry-pick.
+
+19/7/2018
+Got to about the following,
+What is Git cherry-pick,
+Use cases of cherry-pick,
+Cherry-picking becomes very useful and essential when it comes to bug fixing.
+This could also be useful whenever a full branch merge is not possible due to incompatible versions in the various branches.
+Also, you can use git cherry-pick to pull the changes introduced to a sub-branch, without changing the branch, by your colleague working on the same project.
+Working with the documentation on the above.
+
+20/7/2018
+Worked with and done documentation on the following,
+git cherry-pick <commit-id>
+Viewing the Commit History with different options,
+git log --stat
+git log --pretty=oneline
+git log --pretty=fuller
+git log --pretty=format:"%h - %an, %ar : %s"
+Also many other useful options for git log --pretty=format
+
+about git log url > https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History(patch)
+cherry pick abort continue > file:///C:/Program%20Files/Git/mingw64/share/doc/git-doc/git-cherry-pick.html
+https://www.quora.com/What-is-the-difference-between-the-reset-and-revert-commands-in-the-Git-version-control-system
+---------------
+git gui
+reset vs revert
+git reset --keep
+git rebase --abort,
+git rebase --continue,
+git rebase --skip,
+git rebase --quit,
+rebase exec
+git cherry pick
+patch
+git tutorial
+reflog
+--------------
+
+ 
 
 
-Different command line arguments such as:
-- soft only changes HEAD, but doesn’t change staged files in index or working files,
-- mixed moves HEAD and updates the index with the contents of the revision to which HEAD now points,
-- hard moves HEAD and updates the index and working directory—this is the only version of reset that can cause data loss.
+ref: file:///C:/Program%20Files/Git/mingw64/share/doc/git-doc/git-reset.html
+ref1: https://stackoverflow.com/questions/2530060/can-you-explain-what-git-reset-does-in-plain-english
 
-
-
-
-edit f1
-e f2
-e f3
-
-					mixed reset - default reset
-
-git add
-
-                      soft reset - undo command
-	 
-git commit -m " "
-
-111111111111111111111111111111111
-
-
-
-
-Worked with the following commands:
-git diff HEAD which compares between the working tree and the HEAD - most recent commit,
-git show commitid,
-git revert commitid,
-git clean -f used to remove untracked files,
-Got to know about shortcuts in git bash:
-Ctrl + Ins (to copy the content from the terminal)
-Shift + Ins (to paste the content from the terminal)
-Working with the command git clean -xdf even removes all ignored files.
 
 ------------------------------------------------------------------------------------------------------------
 tasks: 
@@ -573,6 +639,8 @@ https://www.youtube.com/watch?v=jza3xtBVjMc > git reset and git revert
 https://www.youtube.com/watch?v=ErJyWO8TGoM > .gitignore
 https://gettinggit.com/learn > all the concepts category wise
 
+Ctrl + Ins (to copy the content from the terminal)
+Shift + Ins (to paste the content from the terminal)
 -----------------------------------------------------------------------------------------------------------------------
 
 NOTES:
@@ -582,7 +650,6 @@ git reset --hard will not remove untracked files,
 where as git-clean will remove any files from the tracked root directory that are not under Git tracking.
 git log --pretty-oneline
 git log --pretty-oneline | grep NewB > will get all the commits of NewB branch
-
 
 ------------------------------------------------------------------------------------------------------------------------------------
 scenarios:
@@ -597,6 +664,7 @@ git bisect
 git reset --soft
 git reset --hard
 git reset --mixed
+patch
 git reset --hard HEAD
 How to create a branch from previous commit in git
 Creating a Branch from a Stash
@@ -630,6 +698,10 @@ git log -3 --graph -> shows last three commits
 git cherry pick
 setting private and public repos in github
 no need to give git credentials if it is a public repo
+git clone https://github.com/doddam/myRepo.git - Clone a remote repository
+git clone https://github.com/doddam/myRepo.git . - Clone a remote repository in the current directory
+file:///C:/Program%20Files/Git/mingw64/share/doc/git-doc/git-reset.html
+
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -675,84 +747,6 @@ tag
 For being cool (most versioners can't even do these):
 bisect
 rebase
-
-What is git rebase?
-Rebasing is the process of moving or combining a sequence of commits to a new base commit.
-
-Usage
-The primary reason for rebasing is to maintain a linear project history.
-
-pick (p for short) is the default action. In this case it would reapply the commit as is, no changes in its contents or message. Saving (and executing) this file would make no changes to the repository.
-
-If I say reword (r for short) in a commit I want to edit:
-
-pick 07c5abd Introduce OpenPGP and teach basic usage
-pick de9b1eb Fix PostChecker::Post#urls
-r 3e7ee36 Hey kids, stop all the highlighting
-pick fa20af3 git interactive rebase, squash, amend
-When I save and quit the editor, git will follow the described commands, landing myself into the editor again, as if I had amended commit 3e7ee36. I edit that commit message, save and quit the editor, and here is the output:
-
-robots.thoughtbot.com tc-git-rebase % git rebase -i HEAD~4
-[detached HEAD dd62a66] Stop all the highlighting
- Author: Caleb Thompson
- Date: Fri Oct 31 10:52:26 2014 -0500
- 2 files changed, 39 insertions(+), 42 deletions(-)
-Successfully rebased and updated refs/heads/tc-git-rebase.
-Now Caleb says in his commit message “Stop all the highlighting”, whether you are a kid or not.
-
-You should see a file displayed by your default editor. It should contain a list of commits made:
-
-pick 07e03c2 add 2.txt
-pick 5a71aa8 add 3.txt
-pick d693749 add 4.txt
- 
-# Rebase 785d03b..d693749 onto 785d03b (3 commands)
-#
-# Commands:
-# p, pick = use commit
-# r, reword = use commit, but edit the commit message
-# e, edit = use commit, but stop for amending
-# s, squash = use commit, but meld into previous commit
-# f, fixup = like "squash", but discard this commit's log message
-# x, exec = run command (the rest of the line) using shell
-# d, drop = remove commit
-#
-# These lines can be re-ordered; they are executed from top to bottom.
-#
-# If you remove a line here THAT COMMIT WILL BE LOST.
-#
-# However, if you remove everything, the rebase will be aborted.
-#
-# Note that empty commits are commented out
-NOTE: Commit ids such as “07e03c2” are a stand-in for whatever commit id Git creates for each specific commit.
-
-Fixup or 'f' has the same combining effect as squash. Unlike squash, fixup commits will not interrupt rebase playback to open an editor to combine commit messages. The commits marked 'f' will have their messages discarded in-favor of the previous commit's message.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-git clone https://github.com/doddam/myRepo.git - Clone a remote repository
-git clone https://github.com/doddam/myRepo.git . - Clone a remote repository in the current directory
 -------------------------------------------------------------------------------------------------------------------
 
 Jenkins:
@@ -764,8 +758,8 @@ WAR or Directory URL: -> path to context.xml  -> (/path/to/bar.war!/) ->  /home/
 /data/Tomcat/conf
 /home/dmanasa/Desktop
 https://www.nagios.org/about/overview/ -> nagios working
-
-Task -> create number of child branches and integrate to master branch
+http://docs.ansible.com/ansible/latest/playbooks_loops.html#standard-loops
+Task -> create numb8/er of child branches and integrate to master branch
 Task -> Configuring GitHub for Jenkins -> https://valuebound.com/resources/blog/continuous-integration-using-jenkins-and-github-to-automate-deployment
 Task -> about git extensions -> https://media.readthedocs.org/pdf/git-extensions-documentation/latest/git-extensions-documentation.pdf
 Task -> setup jenkins.war in tomcat and run it 
@@ -791,71 +785,871 @@ june - 4th
 
 1417178000010632
 ifsc - KVBL0001417
+108.anilkumar@gmail.com
 
+-------------------------------------------------------------------
 
 116+k+s(rng)
 108r+116+16rnds(rng)
+111111111111111111111111111111111
 
 
-To properly understand git reset usage, we must first understand Git's internal state management systems. Sometimes these mechanisms are called Git's "three trees". 
 
-To review, git reset is a powerful command that is used to undo local changes to the state of a Git repo. Git reset operates on "The Three Trees of Git". These trees are the Commit History ( HEAD ), the Staging Index, and the Working Directory. ... The options --soft, --mixed , and --hard can be passed to git reset .
+--------------------------------------------------------------------
+
+ppts on git:
+-----------
+
+https://www.quora.com/Where-can-I-learn-Git
+https://www.slideshare.net/HubSpot/git-101-git-and-github-for-beginners
+
+fatal: unable to access repository url SSL certificate problem: self signed certificate in certificate chain
+error: Could not fetch origin
 
 
-git reset, moves both the HEAD and branch refs to the specified commit.
-  
+git config http.sslVerify false
+
+
+
+10/4/2018
+Downloaded jenkins on windows
+Started jenkins using command prompt and done with the following command to extract the .war file (java -jar jenkins.war). 
+Accessed jenkins through the link −> http://localhost:8080
+Jenkins dashboard is opened by providing user name and password
+Exploring jenkins dashboard/console
+Changed the port from 8080 to 8088 using the command java -jar jenkins.war --httpPort=8088 and accessed jenkins through http://localhost:8088
+Troubleshooting the issue regarding plugins as default plugins are not available in the dashboard.
+
+11/4/2018
+Working with the scenario: Compiling and running a java file in jenkins on Windows i.e., by integrating Jenkins and GitHub (with the GitHub Jenkins Plugin)
+Exploring GitHub repository
+Created an account in github -> https://github.com/ and created a new repository
+Uploaded some files into repository by browsing the fil path and committed the changes.
+Checked the files present in the particular repo whether they are committed or not.
+Modified files which are already uploaded in the repo and again committed
+Deleted files in the repository by selecting particular file to be deleted and again committed
+I have pushed the code into the git repository and committed the changes required, debugging the plugins issue in jenkins and doing documentation parallely.
+
+12/4/2018
+Done with a scenario Git Plugin setup in Jenkins
+Downloaded the latest Git.exe file for Windows and Installed 
+Aaccessing git from windows command prompt without using Github server
+Got to know about Git advantages
+Working with git commands which are used to set a git repository
+
+13/4/2018
+Working with the scenario integrating jenkins and github i.e., Compiling and running a java file in jenkins on Windows
+Successfully pushed the code into git repository
+But unable to push code from git repository to the jenkins because of the following issue.
+  Error occurred due to "SSL certificate problem: self signed certificate in certificate chain"
+To check the issue, I have cloned files from the repository to local environment. But again faced the same issue.
+Unable to access git, so troubleshooting the above issue.
+
+16/4/2018
+Done with the scenario:
+Integrating jenkins and github via github plugin; i.e., Compiling and running a java application in jenkins on Windows
+Created a job in jenkins
+Configured the job with respective details:
+ Gave Project details and GitHub url (as my repository is hosted from github)
+ Selected Source Code Management (SCM) as Git and provided the respective url
+ Next pushed the code; now coming to Build section, opted for add build step 
+ Gave the commands required for compiling and running the application by selecting the option Execute Windows batch command.
+ Saved and Build the job successfully; Now build history is seen by clicking #1 
+ Output is viewed in console output section once job is build successfully.
  
-Attended few sessions on DevOps tool that is Ansible, myself went indepth about the tool and worked with which is an open source software that automates configuration management and application deployment that connects via SSH.
+17/4/2018
+Doing research and development on pull request and merge request,
+Attended KT session on NOC (Network Operations Center) and Nagios,
+Done with the issue "SSL certificate problem: self signed certificate in certificate chain",
+Tested Jenkins by picking up an appilcation from git repositroy to integrate,
+Troubleshooting the issue: Class names, are only accepted if annotation processing is explicitly requested.
+
+18/4/2018
+Done with the issue "Class names, are only accepted if annotation processing is explicitly requested",
+Tested the scenario again in Jenkins by picking up an appilcation from git repositroy to integrate - worked fine,
+Done documnetation on the scenarios: Jenkins - Git Setup & Integrating Jenkins - GitHub
+Attended KT session on disk alerts and application alerts
+Getting to know about Network Operations Center, its design and managing NOC
+
+19/4/2018
+Got to know about 
+Booting process in linux
+Steps involved in the booting process
+Commands to Monitor Swap Space Usage in Linux
+Usage of nice and renice commands
+Exploring the git gui 
+Doing r&d on git on windows
+
+20/4/2018
+Attended a meeting on an effective communication,
+Got to know about logrotate,
+Doing r&d on git extension on windows,
+Working with the scenario Jenkins Tomcat setup,
+Troubleshooting the issue "FAIL - Application at context path [/jenkins] could not be started".
  
-We use yaml scripting in Ansible playbooks where the script is written once and can be run on multiple servers at a time. Used for configuration mangement and appication deployments.
+23/4/2018
+Done with the issue "FAIL - Application at context path [/jenkins] could not be started",
+Configured the following in tomcat web application manager to deploy jenkins.war file,
+Context Path 	
+XML Configuration file URL	
+WAR or Directory URL
+Successfully deployed jenkins.war in the tomcat,
+Troubleshooting the issue "The origin server did not find a current representation for the target resource or is not willing to disclose that one exists" while accessing the jenkins.
 
-YAML, YAML Ain't Markup Language is a human-readable data serialization language.  Learned and wrote YAML scripts which are used in writing Ansible playbooks used for configuration management and application deployments.
+24/4/2018
+I have been monitoring mails,
+Started the jenkins application from tomcat, message is displayed as "OK - Started application at context path [/jenkins]",
+Tried to access jenkins through http://localhost:8080/jenkins/ but facing the issue "HTTP Status 404 – Not Found",
+Troubleshooting the above issue,
+Meanwhile trying to deploy jenkins.war directly by uploading WAR file without configuring, but unable to do so because the connection to the server was reset while the page was loading.
 
-The working directory
-The Working Directory, this tree is in sync with the local filesystem i.e., the current set of files you’re working on in your file system.
+25/4/2018
+Checked the opened ports on the system by using netstat command and its options,
+And changed the tomcat port as jenkins and tomcat are running on the same port; some port conflicts occurred,
+Stopped the tomcat server
+Opened Tomcat_Home/conf/server.xml file to edit 
+Looked for the port *8080* in the xml file and replaced with the other available port.
+<Connector port="8080" protocol="HTTP/1.1" 
+connectionTimeout="20000" 
+redirectPort="8443" />
+Wrote playbook for deploying jenkins.war in the tomcat,
+Successfully deployed jenkins.war in the tomcat,
 
-Staging index
-This tree is tracking Working Directory changes, that have been promoted with git add, to be stored in the next commit. This tree is a complex internal caching mechanism. Git generally tries to hide the implementation details of the Staging Index from the user.
+26/4/2018
+Working with the scenario jenkins tomcat setup,
+Modifying the playbook jenkins.war,
+Working with the ansible modules that enables the port 8080 such that jenkins would run on that port,
+Troubleshooting the issues:
+Encountered exception [javax.management.RuntimeOperationsException: Exception invoking method check],
+403 Access Denied - You are not authorized to view this page
+By default the Manager is only accessible from a browser running on the same machine as Tomcat. If you wish to modify this restriction, you'll need to edit the Manager's context.xml file. 
 
-Commit history
-The final tree is the Commit History. The git commit command adds changes to a permanent snapshot that lives in the Commit History. This snapshot also includes the state of the Staging Index at the time of commit.
+27/4/2018
+Done with the scenario jenkins tomcat setup on windows,
+Installed tomcat on windows,
+Changed the default port of tomcat server in conf/tomcat-users.xml,
+Downloaded jenkins.war,
+Placed the jenkins.war file in webapps folder,
+And successfully deployed jenkins.war application in tomcat web application manager,
+Accessed the jenkins application from the tomcat,
+Working with the documentation for the scenario jenkins-tomcat setup.
 
-HEAD
-This is an alias for the tip of the current branch, which is the most recent commit you have made to that branch.
+2/5/2018
+Done with the documentation jenkins-tomcat setup,
+Done with the scenario, jenkins picks up a java application from local system which is placed in the jenkins workplace an then a job is build,
+Done document on the above scenario,
+Attended KT session on 
+LDAP servers,Active Directory,User creation in Physical box and VM.
 
-when you do a git add, it stages the file in the index, and Git says “oh, okay, now your working copy and index match, but those are both different than HEAD.”
+3/5/2018
+Went through the LDAP and AD also Git tutorial sessions,
+Installed git on windows and accessed it from git bash,
+After building the project (integrating Jenkins and Git) received the above error on the console output section,
+" ERROR: Error cloning remote repo 'origin' "
+Troubleshooted above issue by performing the below steps:
+1. Go to Manage Jenkins  >  Global Tool Configurations 
+2. Under Git configuration  >  Git installations 
+3. Enter complete path to git executable including git.exe  > Save  > Again build the project
+Done with the job jenkins and github integration and built it in other way through global tool configuration.
 
-When you then perform a git commit, Git creates a new commit that HEAD now points to and the status of the index and working copy match it so Git’s happy once more.
+4/5/2018
+Went through the jenkins beginner tutorial regarding:
+Scheduling cron jobs in jenkins and 
+About the build trigger configuration with options build periodically and Poll SCM ,
+Done with a scenario Jenkins integration with GIT - SCM successfully,
+Configured Poll SCM in build triggers by scheduling cron job,
+Working with the documentation.
 
-Reset
-If you just look at the reset command by itself, all it does is reset HEAD (the tip of the current branch) to another commit. For instance, say we have a branch (the name doesn’t matter, so let’s call this one “super-duper-feature”) and it looks like so:
+7/5/2018
+Done with the documentation on the scenario - Jenkins integration with GIT - SCM,
+Done with a scenario - scheduling a job in jenkins by using the option build periodically in build trigger section,
+Scheduled job in jenkins by using cron compliant format,
+Completed documentation regarding the scenario.
 
-If we perform:
-
-> git reset HEAD
-
-… nothing happens. This is because we tell git to reset this branch to HEAD, which is where it already is. But if we do:
-
-> git reset HEAD~1
-
-(HEAD~1 is shorthand case for “the commit right before HEAD”, or put differently “HEAD’s parent”) our branch now looks like so:
-
-If we start at the latest commit again and do:
-
-> git reset HEAD~2
-
-our branch would look like so:
-
-Again, all it does on a basic level is move HEAD to another commit.
-
-git reset is similar in behavior to git checkout. 
-
-Where git checkout solely operates on the HEAD ref pointer, git reset will move the HEAD ref pointer and the current branch ref pointer. To better demonstrate this behavior consider the following example:
-
-https://www.msn.com/en-in/health/medical/25-secret-tips-to-stop-the-ageing-process/ss-AA99Muh?li=AAgg4jn#image=3
-
-
-
-
+8/5/2018
+Made some modifications in the documentation on the scenario - Jenkins integration with GIT - SCM,
+Gone through Git and GitHub Beginner Tutorial on Branching and Merging concept,
+Got to know about few commands those are required for Branching and Merging,
+Working with Branching & Merging, made changes in github using git commands through git bash,
+Troubleshooted the issue: 
+! [rejected] master -> master (fetch first)
+error: failed to push some refs to 'git repo url'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+To change repository name > click on particular repository to be changed > goto settings > change the name > click rename
  
- 
+9/5/2018 
+Done documentation on the following:
+Git & Git Hub Introduction,
+Installing Git on windows,
+Creating a branch,
+Merging a branch,
+Deleting a branch,
+Working with the scenario i.e., accessing files from a new branch in git repository other than using master branch from jenkins.
+
+10/5/2018
+Gone through the Git and GitHub Beginner Tutorial on how to send email from GitHub,
+Done with the scenario successfully on how to trigger notification email from github whenever there is a change/commit in the project by:
+Adding Email service to get notification to the particular email address and
+Tested and validated the scenario by making some changes in the project to check whether notification is triggered or not,
+Done with the documentation regarding the above mentioned scenario.
+
+11/5/2018
+Gone through the Git and GitHub Beginner Tutorial regarding creating users and managing roles,
+Installed Role-based Authorization strategy plugin,
+Created and Cofigured new users in jenkins dashboard,
+Created and Assigned users to roles,
+Plugin enables user authorization and roles can be defined globally or for particular jobs or nodes selected by regular expressions,
+Controlled user access on projects by creating global role employee and project roles developer and tester.
+
+14/5/2018
+Gone through Git and GitHub Beginner Tutorial on git tags,
+Got to know about: 
+Branching versus tags,
+Tags which allow you to refer to a specific commit in a repository,
+Difference between tags and annotated tags,
+Worked with the git tag commands to create tags and annotated tags also deleted tags,
+Working with Display or show tags.
+
+15/5/2018
+Done documentation on branching versus tags, creation of tags, annotated tags and displaying tags.
+Worked with show or display tags,
+Pushed tags to remote repository,
+Using git commands:
+Deleted tags from local,
+Deleted tags from remote,
+Deleted multiple tags from local and remote.
+
+16/5/2018
+Done documentation on the following:
+Viewing the created tags and pushing them to remote repository,
+Deleting tags from local & remote repository,
+Deleting multiple tags from local and remote,
+Got to know about Checksum number, cryptographic hash number, SHA-1 algorithm,
+Done with a scenario by creating a tag at a particular commit point inorder to take backup in the midst of several commits.
+After creating the tag at the historic point, tags pushed to remote repo only can be seen in releases tab.
+
+17/5/2018
+Done documentation on the scenario creating a tag at a particular commit point inorder to take backup in the midst of several commits,
+Created a tag for the past commit using checksum number and took a backup at a historic point,-
+Done documentation for creating a tag on past commit,
+Went through the tutorial on quick basic navigation and keyboard shortcuts for using GitBash and worked on it,
+Solved the issue as I had a problem that is after exiting git log in windows git bash, text is disappeared on git bash and unable to access it properly.
+
+18/5/2018
+Done doc on using few keyboard shortcuts for using GitBash,
+Pulled changes from Git repository on Git hub Cloud,
+Parallely done doc on the scenario,
+Goning through the git tutorials.
+
+21/5/2018
+Used a Git branch to merge a file by following the below steps:
+Created a branch and checked it out,
+Made a change in the new branch,
+Committed the change to the new branch,
+Integrated that change back into the main branch,
+Deleted the branch you are no longer using.
+Working with the documentation on the above scenario.
+
+22/5/2018
+Got to know about fast-forward merge,
+Done documentation on Merging a branch into master branch using git bash by following steps:
+Creating a new branch and make a change,
+Merging the branch with master > “fast-forward merging”,
+Push your change to GitHub,
+Going through the tutorials Git & Git hub - forking concept.
+
+23/5/2018
+Done with the following scenario,
+Forked an example repository "Spoon-Knife repository"
+Synced the fork by
+a. Setting up Git
+b. Creating a local clone of the fork
+c. Configuring Git to sync your fork with the original Spoon-Knife repository
+
+
+24/5/2018
+Done documentation on the following,
+Forking an example repository "Spoon-Knife repository",
+Syncing the fork by,
+a. Setting up Git
+b. Creating a local clone of the fork
+c. Configuring Git to sync your fork with the original Spoon-Knife repository
+Gone through the doc in GitHub.com on how to create a pull request from a fork,
+Attended KT session on different types of backups and EMC Avamar.
+
+25/5/2018
+Done a scenario by creating a pull request from fork,
+Working with the documentation on the above scenario,
+Got to know how to delete and deleted the forked repo from your GitHub account,
+Goning through the different types of backup operations:
+Full backup
+Incremental backup 
+Differential backup
+
+29/5/2018
+Done with the documentation on
+What exactly is a pull request,
+Creating a pull request from fork and 
+Opened a pull request
+Got to know about git pull vs git and done doc on that
+
+30/5/2018
+Gone through the git stash tutorials,
+Going through the following commands regarding their usage:
+git stash
+git list
+git stash pop
+git stash apply <stashname>
+
+31/5/2018
+Gone through the git fetch tutorials,
+Working with the following commands:
+git fetch
+git merge
+git pull
+Got to know about the differences between git fetch, git merge and git pull,
+Working with the documentation.
+
+
+1/6/2018
+Done with the documentation on the following concepts:
+git pull,
+git fetch,
+git merge &
+git pull vs git fetch
+Going through the tutorials on git rebase.
+
+4/6/2018
+Done with the scenario - stashing changes from one branch to other with ease by following steps:
+Created a new file on master branch,
+Used command git stash to save file temporarily,
+Later moved the file to the new branch,
+Used git stash apply command and commit to save the changes from one branch to the other branch i.e., master to new branch.
+# Once git stash apply command is used - file is viewed on the new branch and can't be seen on the master branch.
+
+5/6/2018
+Done documentation on the scenario - Stashing changes from one branch to other with ease or before checking out a different branch by 
+a. Creating a new file on master branch,
+b. Used git stash save "message" command to save file temporarily,
+c. Moved file to the new branch by using git stash apply command,
+d. And committed to save the changes from one branch to the other branch.
+Solved the issue "error: you need to resolve your current index first the file: needs merge"
+
+6/6/2018
+Done the documentation on the following,
+What is Stashing &
+When to Stash your work
+Done with a scenario by 
+Stashing files using git stash command
+Unstashed files by using git stash pop command on the same branch.
+
+
+7/6/2018
+Got to know about and worked with the following commands:
+git stash pop
+git stash drop
+git stash drop <stash_id>
+git stash clear
+Working with git stash document in detail.
+
+8/6/2018
+Done with the documentation on the following:
+Re-applying the stashed changes,
+Stashing untracked or ignored files,
+Managing multiple stashes,
+Worked with scenario i.e., applying the same stashed changes to multiple branches,
+Getting to know about the procedure on how to unapply the stash.
+
+11/6/2018
+Got to know about and working with the following commands:
+git diff 
+git diff --staged 
+git diff HEAD 
+git diff --color-words
+git diff --word-diff
+git diff --stat
+
+[git diff (working directory differs from staging area)
+git diff --staged (staging area & repository)
+git diff HEAD (compares working tree and the most recent commit)
+git diff id1 id2 (compare btwn two commit coz once committed only ids are generated)\
+git diff --color-words
+git diff --word-diff
+git diff --stat
+
+12/6/2018
+Done with the documentation on:
+How to get commit ID,
+Diff between working directory and staging area,
+Diff between staging area and last commit,
+Diff between last commit and working directory,
+Diff between 2 commits in the same branch,
+How to find what files are changed.
+
+13/6/2018
+Got to about the following and done doc on:
+What happens if you create a new branch?
+How does Git know what branch you’re currently on?
+How to find what commit is current HEAD?
+What is detached HEAD?
+Stashing untracked files using different options.
+
+14/6/2018
+Created a branch from another branch using git bash.
+Worked with git branch commands with various options:
+-a which shows all local and remote branches
+-r which shows only remote branches
+Figured out what branches are on remote by actually using the remote related commands:
+git remote
+git ls-remote
+
+15/6/2018
+Done documentation on the following:
+Creation of a branch from the other branch,
+On git branch commands with various options -a and -r,
+On git remote and git ls-remote to figure out what branches are on remote,
+On git diff with option 'color' for a single file and for multiple files.
+Worked with the commands to configure vimdiff as default git difftool and
+Turn off the prompt globally which prompts always asking to launch the vimdiff or not.
+
+18/6/2018
+Gone through git difftool tutorials
+Worked with the following commands and done doc on them
+vimdiff file1 file2
+git difftool filename before and after staging 
+git checkout filename
+git diff commitid1 commitid2
+git difftool HEAD HEAD^ filename 
+
+19/6/2018
+Worked with the following commands:
+git diff HEAD which compares between the working tree and the HEAD - most recent commit,
+git show commitid 
+ eg: git show b9438 ( first 5 alphanumeric in commit id)
+git revert commitid
+ eg: git revert b9438 ( first 5 alphanumeric in commit id)
+git clean -f used to remove untracked files,
+git clean -xdf even removes all ignored files,
+Got to know about shortcuts in git bash
+Ctrl + Ins (to copy the content from the terminal)
+Shift + Ins (to paste the content from the terminal)
+
+25/6/2018
+Done documentation on the following commands to know their usage:
+git diff HEAD,
+git show commitid,
+git revert commitid,
+git clean -f used to remove untracked files,
+Went through the .gitignore tutorials,
+Working with the .gitignore file,
+Working with the command i.e., git clean -xdf which removes all the  ignored files.
+
+26/6/2018
+Got to know about git ignore patterns where .gitignore uses globbing patterns to match against file names,
+Worked with and done documentation on,
+Ignoring files using .gitignore file by creating a local .gitignore
+1.	In Terminal, navigate to the location of your Git repository,
+2.	Enter touch .gitignore to create a .gitignore file,
+Ignored previously committed file,
+Committed an ignored file.
+
+27/6/2018
+Worked with and got to know about git clean command and its options,
+Done documentation on the following,
+git clean -n
+git clean -f
+git clean -dn
+git clean -df
+Working with the git clean command to remove ignored files
+
+28/6/2018
+Done working with the git clean command to remove ignored files using the options -xf,
+Also done document on the above scenario,
+Worked with Interactive mode or git clean interactive mode using various commands in it such as,
+1: clean
+2: filter by pattern
+3: select by numbers
+4: ask each 
+5: quit
+6: help
+Working with the commands filter by pattern and select by numbers.
+
+29/6/2018
+Done document on Interactive mode or git clean interactive mode using various commands in it such as,
+1: clean
+4: ask each 
+5: quit
+6: help
+Working with the following scenarios for changing the commit message in two ways,
+1. Commit has not been pushed online
+2. Amending older or multiple commit messages
+
+2/7/2018
+Worked with the following scenarios and done with the documentation.
+1. Procedures for amending the commit that has not been pushed online
+(i)Changing a commit message that is rewriting the most recent commit message which is not pushed into github repository.
+2. Procedures for amending older commit messages
+(i) Amending the message of the most recently pushed commit.
+(ii)Amending older commit message after a file is pushed into GitHub.
+
+3/7/2018
+Worked with the following interactive rebase commands 
+pick which will keep the commit.
+reword allows to edit the commit message.
+edit will pause the rebase process so you can make more changes to the commit.
+squash will condense the commit into the previous commit and let you edit the commit message.
+fixup will condense the commit into the previous commit without editing the commit message.
+drop will remove the commit or you can simply delete the line from the file.
+
+5/7/2018
+Done documentation on the following,
+What is git rebase?
+what is the usage of git rebase?
+Use of the git interactive rebase command,
+$ git rebase -i HEAD~3
+Usage of the interactive rebase commands,
+pick
+reword
+exit
+
+6/7/2018
+Done documentation on the following,
+Normal Rebase vs Interactive Rebase,
+squash which is a interactive rebase command,
+drop also an interactive rebase command,
+Git rebase interactive drop vs deleting the commit line,
+Working with git rebase exec command.
+
+9/7/2018
+Got to know about the following and working with the documentation,
+What is reset,
+Three trees of git,
+Different command line arguments such as:
+- soft only changes HEAD, but doesn’t change staged files in index or working files,
+- mixed moves HEAD and updates the index with the contents of the revision to which HEAD now points,
+- hard moves HEAD and updates the index and working directory—this is the only version of reset that can cause data loss.
+
+10/7/2018
+Done documentation on the following,
+What is reset and three trees of git,
+What happens if the following commands are performed,
+git reset HEAD
+git reset HEAD~1
+git reset HEAD~2
+Working of reset,
+Difference between git checkout and git reset
+
+11/7/2018
+Got to know about the following:
+Scope of git reset modes,
+All the options available for commit and reset,
+Worked with the following examples:
+Undo add,
+Undo a commit,
+Undo a merge or pull,
+Reset a single file in the index.
+
+12/7/2018
+Done documentation on the git reset modes,
+git reset --soft
+git reset --mixed
+git reset --hard
+git reset --merge
+How to reset a single file using command git reset -- filename
+
+13/7/2018
+Got to know the difference about HEAD vs ORIG_HEAD,
+Done with the following examples:
+Undo commits permanently,
+Undo a commit and redo,
+Undoing a merge or pull inside a dirty working tree,
+Working with the scenario on how to deal with an interrupted workflow.
+
+16/7/2018
+Got to know about snapshot,
+Done working with the scenario and also document on how to deal with an interrupted workflow,
+Worked with the command $ git revert -n commit_id
+Also got to know the difference between the commands,
+$ git revert commit_id and $ git revert -n commit_id,
+Gone through the tutorial on Undoing vs Reverting vs Resetting.
+
+17/7/2018
+Done documentation on the following,
+Undoing the code changes for a single file,
+Undoing the code changes for multiple files at a time,
+Committing code changes directly using the command $ git revert commit_id,
+Also committing code changes explicilty using the command with the option -n, $ git revert -n commit_id,
+Resetting the code changes and moving to the previous commit history.
+
+18/7/2018
+Done document on the following,
+Revert vs Reset,
+Reset can be used in different scenarios,
+Scenario-1: When you have made some changes and you no longer wanted them to be committed you just wanted to go back to the older clean state
+Scenario-2: When you wanted to go to two commits back
+Scenario-3: When you are doing git pull. It might result in merging errors. In this case you might just want to get rid of the mess, then you can simply use 
+Scenario-4: You might have added a file to commit using  git add abc.c but later you realized you do not want to add then you can get it back
+Going through the tutorials regarding git cherry-pick.
+
+19/7/2018
+Got to about the following,
+What is Git cherry-pick,
+Use cases of cherry-pick,
+Cherry-picking becomes very useful and essential when it comes to bug fixing.
+This could also be useful whenever a full branch merge is not possible due to incompatible versions in the various branches.
+Also, you can use git cherry-pick to pull the changes introduced to a sub-branch, without changing the branch, by your colleague working on the same project.
+Working with the documentation on the above.
+
+20/7/2018
+Worked with and done documentation on the following,
+git cherry-pick <commit-id>
+Viewing the Commit History with different options,
+git log --stat
+git log --pretty=oneline
+git log --pretty=fuller
+git log --pretty=format:"%h - %an, %ar : %s"	
+Also many other useful options for git log --pretty=format
+
+23/7/2018
+Got to know about the following,
+Advantage of cherry-pick over merge
+Why cherry-pick?
+Why can't merge?
+What are the commands used for re-writing history (commit --amend, rebase, cherry-pick, merge-squash)
+Done some modifications in the presentation for the demo.
+
+24/7/2018
+Done documentataion on the following,
+Advantage of cherry-pick over merge,
+Why cherry-pick?
+Why can't merge?
+Ways of searching for text in branches using some options in git log command by,
+- search string
+- match regular expression
+Finding branches that contain the commit.
+
+25/7/2018
+Worked and done doc with the following:
+Advanced Git log option to display the first line of each commit message
+Filtering the Commit History using the following
+To search for commits that were created by amount
+To search for commits that were created by date
+To search for commits that were created between two dates
+To search for commits that were created by relative references
+To search for commits that were created by Author
+
+26/7/2018
+Worked and done doc with the following:
+Filter commits by their commit message
+To show the history related to a file
+To search for commits that were created by content
+Filter commits by their range 
+Viewing all commits of any branch from any other branch
+Created an orphan branch and checking the commands to view the list.
+
+
+
+
+
+about git log url > https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History(patch)
+cherry pick abort continue > file:///C:/Program%20Files/Git/mingw64/share/doc/git-doc/git-cherry-pick.html
+https://www.quora.com/What-is-the-difference-between-the-reset-and-revert-commands-in-the-Git-version-control-system
+ref: file:///C:/Program%20Files/Git/mingw64/share/doc/git-doc/git-reset.html
+ref1: https://stackoverflow.com/questions/2530060/can-you-explain-what-git-reset-does-in-plain-english
+
+---------------
+git gui
+reset vs revert
+git reset --keep
+git rebase --abort,
+git rebase --continue,
+git rebase --skip,
+git rebase --quit,
+rebase exec
+git cherry pick
+patch
+git tutorial
+reflog
+------------------------------------------------------------------------------------------------------------
+
+tasks: 
+https://help.github.com/enterprise/2.13/user/articles/changing-a-commit-message/
+https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning
+https://www.youtube.com/watch?v=FyAAIHHClqI
+https://www.git-tower.com/learn/git/ebook/en/command-line/branching-merging/stashing > when to stash
+https://git-scm.com/book/en/v1/Git-Tools-Stashing > stashing
+https://git-scm.com/book/en/v2/Git-Branching-Rebasing > rebasing
+https://orga.cat/posts/most-useful-git-commands > all git cmnds
+https://www.youtube.com/watch?v=jza3xtBVjMc > git reset and git revert
+https://www.youtube.com/watch?v=ErJyWO8TGoM > .gitignore
+https://gettinggit.com/learn > all the concepts category wise
+https://www.atlassian.com/git/tutorials > git tutorial
+https://www.youtube.com/watch?v=xuB1Id2Wxak > git&github video
+http://rogerdudler.github.io/git-guide/ > not indepth
+file:///C:/Program%20Files/Git/mingw64/share/doc/git-doc/git-reset.html
+
+Ctrl + Ins (to copy the content from the terminal)
+Shift + Ins (to paste the content from the terminal)
+-----------------------------------------------------------------------------------------------------------------------
+
+NOTES:
+git clean -f will remove untracked files,meaning they're gone for good since they aren't stored in the repository.
+Make sure you really want to remove all untracked files before doing this.
+git reset --hard will not remove untracked files, 
+where as git-clean will remove any files from the tracked root directory that are not under Git tracking.
+git log --pretty-oneline
+git log --pretty-oneline | grep NewB > will get all the commits of NewB branch
+
+------------------------------------------------------------------------------------------------------------------------------------
+scenarios:
+
+diff btw reset n revert, chckout n reset, head n head~2(diagramatically)
+need to work with "git exec rebase command "
+exec,onto,nooff,todolist
+rebase indepth > https://wilsonmar.github.io/git-rebase/
+git reflog > https://www.atlassian.com/git/tutorials/rewriting-history
+git reflog --relative-date
+git bisect
+git reset --soft
+git reset --hard
+git reset --mixed
+patch
+git reset --hard HEAD
+How to create a branch from previous commit in git
+Creating a Branch from a Stash
+Creating a Branch from a Stash
+diff tool
+Going through the git diff tutorial.
+git stash unapply - git stash show -p 
+git diff
+.gitignore
+nxt scenario -> https://www.atlassian.com/git/tutorials/saving-changes/git-stash
+git commit --amend > command to change the commit message if not pushed to remote repo
+git reset HEAD s2 -> s2 - filename
+git log -- s2
+deletd s2 and restore it
+about integration
+https://www.atlassian.com/git/tutorials/using-branches/git-merge
+git merge
+how it works
+preparing to merge
+confirm the receiving branch
+fetch latest remote commits --> git fetch
+fast forward merge
+3-way merge
+resolving conflict
+how conflicts are presented
+rebase -----------------------------------------------------------------------------1 https://superuser.com/questions/751699/is-there-a-way-to-edit-a-commit-message-in-github/751909
+rebase vs merging ------------------------------------------------------------------2
+stash bfore rebase and merge -------------------------------------------------------3
+changing a commit message -> https://help.github.com/enterprise/2.13/user/articles/changing-a-commit-message/
+git log -3 --graph -> shows last three commits
+git cherry pick
+setting private and public repos in github
+no need to give git credentials if it is a public repo
+git clone https://github.com/doddam/myRepo.git - Clone a remote repository
+git clone https://github.com/doddam/myRepo.git . - Clone a remote repository in the current directory
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Summary & note:
+
+Get a repo from somewhere:
+clone
+
+Create a repo from scratch:
+init
+
+Work in linear fashion on the current branch:
+add
+commit
+mv
+rm
+
+Work with branches themselves:
+branch
+checkout
+merge
+
+For working in and with branches:
+reset
+
+Get information about things:
+log
+status
+diff
+show
+
+For syncing your repo to and from others:
+fetch
+pull
+push
+
+For searching history:
+grep
+
+For marking objects, typically commits:
+tag
+
+For being cool (most versioners can't even do these):
+bisect
+rebase
+-------------------------------------------------------------------------------------------------------------------
+
+Jenkins:
+
+Context Path (required): /jenkins
+XML Configuration file URL:  (:C:/path/to/context.xml)->/data/Tomcat/conf/context.xml
+WAR or Directory URL: -> path to context.xml  -> (/path/to/bar.war!/) ->  /home/dmanasa/Desktop/jenkins.
+/jenkins
+/data/Tomcat/conf
+/home/dmanasa/Desktop
+https://www.nagios.org/about/overview/ -> nagios working
+http://docs.ansible.com/ansible/latest/playbooks_loops.html#standard-loops
+Task -> create numb8/er of child branches and integrate to master branch
+Task -> Configuring GitHub for Jenkins -> https://valuebound.com/resources/blog/continuous-integration-using-jenkins-and-github-to-automate-deployment
+Task -> about git extensions -> https://media.readthedocs.org/pdf/git-extensions-documentation/latest/git-extensions-documentation.pdf
+Task -> setup jenkins.war in tomcat and run it 
+Task -> Deploying a war file from Jenkins to Tomcat(https://www.packtpub.com/mapt/book/virtualization_and_cloud/9781788471060/5/05lvl1sec34/deploying-a-war-file-from-jenkins-to-tomcat)
+link -> http://www.baeldung.com/jenkins-job-schedule
+task -> git hub witheclipse
+https://wilsonmar.github.io/git-rebase/
+
+Reference: https://www.tutorialspoint.com/jenkins/jenkins_git_setup.htm
+https://www.cloudbees.com/blog/using-git-jenkins
+In your Jenkins Dashboard (Home screen), click the Manage Jenkins option on the left hand side.
+github branches in jenkins
+--------------------------------------------------------------------------------------------------------------------
+
+personal:
+--------
+pb887766@gmail.com
+
+tablets: 
+may - 6th
+june - 4th
+
+1417178000010632
+ifsc - KVBL0001417
+108.anilkumar@gmail.com
+
+116+k+s(rng)
+108r+116+16rnds(rng)
+111111111111111111111111111111111
+--------------------------------------------------------------------
+
+ppts on git:
+-----------
+
+https://www.quora.com/Where-can-I-learn-Git
+https://www.slideshare.net/HubSpot/git-101-git-and-github-for-beginners
+
+fatal: unable to access repository url SSL certificate problem: self signed certificate in certificate chain
+error: Could not fetch origin
+
+
+git config http.sslVerify false
