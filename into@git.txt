@@ -1,0 +1,86 @@
+vc - management system - that manages the changes in the project till the end.
+changes are - adding new files or changing source code..
+Everytime you make a change in the project it takes a snapshot of entire project
+snapshot - actually known as different versions
+
+versions- changes are usually termed as versions
+creates a snapshot everytime you change the code
+
+snapshot - entire state of a project at a particular time
+
+
+help a software team manage changes to source code over time. 
+
+Version control software keeps track of every modification to the code in a special kind of database. If a mistake is made, developers 
+can turn back the clock and compare earlier versions of the code to help fix the mistake while minimizing disruption to all team members.
+
+
+
+Example:
+file1 added -> said as version1
+sme chgs in file1 -> said as version2
+
+why vc -> collaborating - combining tasks after they are developed individually
+          storing versions - snapshots of all versions are properly documented and stored
+		  backup - in any case if your central server crashes, a backup is available in your local servers
+
+version control system tools:
+git - a tool that allows to create a local repositories
+svn - apache subversion 
+cvs
+mercurial
+
+svn and cvs -> doesnt provide local copy for some developers
+mercurial - similar to git also a dvcs
+
+git - git is a version control mgmnt tool - git allows you to fetch data from central server and to push local files to central server
+github - is like a social network allows you to share evrything - smthg like fb where they share photos and status etc 
+here developers share code files etc
+
+Forking
+-------
+https://help.github.com/articles/fork-a-repo/
+
+Stashing:
+--------
+Use ' $ git stash save "message" ' to save changes temporarily in local memory.
+
+git stash list - shows the list of temporary changes
+git stash apply <stashname> - applies the changes
+git stash pop - To apply the stash and then immediately drop it from your stack.
+git stash drop - Top of the stash from the stack will be deleted.
+git stash drop <stash_id> - If you no longer need a particular stash, you can delete it with the command.
+git stash clear - You can delete all of your stashes from the stack
+
+Checkout:
+--------
+Undo uncommitted changes
+$ git checkout - - filename
+
+checkout:
+--------
+Undoing:
+Undo uncommitted changes/to discard changes in the working directory using the command 
+      $ git checkout -- filename
+
+Revert:
+------
+Undo committed changes using revert.
+This command is used to revert a particular commit.
+This internally creates a separate commit for reverting a previous commit.
+$ git revert <commit-id>   -> directly committed
+Creates new history and doesn't overwrite history.
+$ git -n revert <commit-id>  -> explicitly commits the changes
+
+Reset:
+-----
+When you have made some changes and you no longer wanted them to be committed you just wanted to go back to the older clean state
+$ git reset --hard HEAD
+This can be used to remove commits from the current branch.
+
+Cherry-pick:
+-----------
+Cherry pick commits and apply them to another branch (first grab the commit ID from the branch with said commit, then checkout the branch you wish to apply the commit to)
+$ git cherry-pick COMMIT-ID
+
+commit - recording changes
