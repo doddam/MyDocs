@@ -1447,11 +1447,262 @@ Worked and done doc with the following:
 Filter commits by their commit message
 To show the history related to a file
 To search for commits that were created by content
-Filter commits by their range 
+Filtering commits by their range 
 Viewing all commits of any branch from any other branch
 Created an orphan branch and checking the commands to view the list.
 
+27/7/2018
+Got to know about and worked with the following:
+What is a patch?
+What is the use of patch?
+In what scenario do we use patch?
+How to create a patch?
+View all the files in a patch directory.
+How to apply a patch to another branch?
+Also done documentation on the above.
 
+31/7/2018
+Worked with the some of advanced log commands for graphing and done doc on the following:
+Visualizing the commit graph, showing information related to each commit.
+To only show the commit id and comment per-commit.
+To know the history by checking linear series of commits, and get sense of what was merged in where.
+To know history of all the branches like commits and where are they merged.
+Decorated the terminal to make easier display with different colors to check what branch is where.
+
+1/8/2018
+Worked with the some more advanced log commands for graphing and done doc on the following:
+To show commits from oldest to newest
+Showing the reference name on each line by adding - -source to the decorated terminal
+To view abstract shape of the git repo
+To view the significant points in commit history by eliminating all the intermediary commits
+To view the whole history of the project inorder to re-introduce the Date info 
+Getting to know about Docker
+
+2/8/2018
+Worked with reflog commands and done doc on the following,
+Got to know about the reflog and why is it important
+Reference logs that keeps track of updates to the tip of branches
+To get a complete reflog of all references
+Pass the branch name inorder to check the reflog for a specific branch
+To view previously stashed some changes using the reflog stash command
+The returned reference pointers can be passed to other commands
+
+3/8/2018
+Got to know about the following,
+Why do we need containerization?
+What is container?
+Difference of conterization over virtualization
+Advantages of container
+What is docker on container?
+
+6/8/2018
+Gone through the docker tutorials
+Got to know about the following:
+What is Docker?
+Why do we use Docker?
+What is docker Architecture?
+What are the Components present in the docker?
+
+7/8/2018
+Got to know the following things about docker
+What are Docker Images?
+How to pull/download docker images?
+How to list available docker images?
+How to know detailed information about a docker image?
+How to get history of a docker images?
+Gone through some tutorials regarding docker images.
+
+8/8/2018
+Installed docker toolbox on windows system,
+Fixed an issue "Looks like something went wrong in step ´Looking for vboxmanage.exe´... Press any key to continue..." when I click on "Docker Quickstart Terminal",
+Got to know following things about docker images,
+How to Save or Backup a Docker Images?
+How to Restore a Docker Images from a Backup?
+How to remove or delete Docker Images?
+
+9/8/2018
+Fixed an issue in docker installation "Looks like something went wrong in step 'Checking if machine default exists'...Press any key to continue"
+Got to know about what a docker file is?
+And what a docker build is?
+Troubleshooting the issue "ERROR: Get https://registry-1.docker.io/v2/: x509: certificate signed by unknown authority" and
+Also going through the best practices for writing Docker files.
+
+10/8/2018
+Created a default docker machine and listed available machines
+Used environment commands for the new VM
+Connected shell to the new machine
+Ran a container with docker run to verify set up of the machine.
+Troubleshooting the issue "ERROR: Get https://registry-1.docker.io/v2/: x509: certificate signed by unknown authority".
+
+13/8/2018
+Gone through the tutorials and got to know the following things:
+What is a Docker Registry?
+Why do we use Docker Registries?
+Architecture of docker that how a docker file is loaded to a Git Repo and then to jenkins server.
+What is a Docker hub?
+Working with a scenario to pull a sample image from docker hub.
+
+14/8/2018
+Got to about dynamic host configuration protocol server
+Troubleshooting the following issues:
+#1 VBoxManage.exe: error: Failed to attach the network LUN (VERR_INTNET_FLT_IF_NOT_FOUND) VBoxManage.exe: error: Details: code E_FAIL (0x80004005), component ConsoleWrap, interface IConsole
+#2 Error checking TLS connection: ssh command error:
+command : ip addr show
+err     : exit status 255
+output  :
+Error checking TLS connection: ssh command error:
+command : ip addr show
+err     : exit status 255
+#3 Error response from daemon: Get https://registry-1.docker.io/v2/: x509: certificate signed by unknown authority
+
+15/8/2018
+Troubleshooted the issues by performing following actions,
+By regenerating the certificates
+Restarted the docker host
+Environment variables are set for the command window after restarting the machine
+By reinstalling Docker toolbox and Oracle VM VirtualBox
+By restarting the docker machine
+
+16/8/2018
+Got to know how does the format of a docker file exists?
+What are the instructions present in docker file?
+Where and what arguments needed to be passed for each instruction?
+Got to know sample intructions like,
+FROM instruction to start the Dockerfile specifying which image we derive our image from.
+MAINTAINER instruction to specify oneself or one's organization as the maintainer of the image by placing one's email address there.
+COPY will copy the files into the image.
+
+17/8/2018
+Solved the issue "error checking tls connection: error cchecking and/or regenerating the certs: There was an error validating certificates for host "192.168.99.100:2376": dial tcp 192.168.99.100:2376 i/o timeout"
+Troubleshooting issue - error response from daemon certificate signed by unknown authority by,
+Moving the bin path to last in PATH environment variable.
+Changing the content in daemon.json file
+Created a new docker machine node1 and regenerated the certificates 
+Also tested by restarting new machine and by setting the environment variable.
+
+20/8/2018
+Got to know about yum-utils which is a collection of utilities as plugins extending yum in different ways,
+What is EPEL and why do we use EPEL repository?
+How to enable EPEL repository in CentOS being a root user.
+Installed docker package on CentOS using the command # yum install docker
+To install docker, the epel repositories must be enabled on the system by issuing # yum install epel-release
+Troubleshooting the issue Cannot retrieve metalink for repository: epel/x86_64. Please verify its path and try again
+(https://www.tecmint.com/install-docker-and-learn-containers-in-centos-rhel-7-6/)
+
+NIS:
+#1 Facing the issue in CentOS Error response from daemon: Get https://registry-1.docker.io/v2/: x509: certificate signed by unknown authority
+#2 Cannot retrieve metalink for repository: epel/x86_64. Please verify its path and try again
+#3 Facing the issue - One of the configured repositories failed (Unknown),
+ and yum doesn't have enough cached data to continue. At this point the only safe thing yum can do is fail.
+ 
+21/8/2018
+Installed docker successfully on CentOS,
+After installation, started the daemon, checked its status and enabled it using the docker commands,
+Verified if Docker works properly by running a container test image and made sure it works by checking the ouptut,
+Ran a few basic Docker commands to get some information about docker on the following,
+For system-wide information on Docker # docker info
+To know docker version # docker version
+To get a list of all available Docker commands on the console # docker
+
+
+22/8/2018
+Searched the required image from docker hub and downloaded a docker image.
+Pulled an ubuntu image from the docker hub and listed the available images on the host.
+Allocated a unique name for every container by using the --name option on command line.
+Manipulated containers (start, stop, remove, stats) by addressing its name which is allocated as before.
+Got to know about the running containers ID by issuing # docker ps command.
+Issued # docker stop command by specifying the container ID to stop the running container  -------- x ------ not as status
+Fixed the issue "Docker error cannot delete docker container, conflict: unable to remove repository reference".
+
+23/8/2018
+Done documentation on the following concepts,
+What is containerization and why do we need containerization 
+Difference of containerization and Virtualization
+Advantages of container
+What is Docker and why do we use docker
+What is docker on container
+
+24/8/2018
+Done documentation on the following,
+What is docker architecture and docker components ?
+What is a docker client and docker host/docker enginee ?
+What is a docker registry ?
+What are docker images and docker containers ?
+What is a docker network (Bridge, Host, None)
+Also we have other network drivers (Overlay, Mavlan)
+What is a docker storage and how many types of storage are available (volumes, bind mounts, tmpfs mounts) 
+
+27/8/2018
+Done documentation on the following,
+How to install docker package on CentOS 7 and CentOS 6
+After docker package has been installed, done the following by using the docker commands 
+Starting the daemon 
+Checking its status
+Enabling it system wide both on CentOS 6 and CentOS 7
+Ran a container test image to verify if docker works properly by issuing docker command
+How to know the system-wide information on docker, docker version and list of docker commands available on console.
+
+28/8/2018
+Going through the tutorials for integrating IBM Integration Bus on docker.
+Done documentation on the following,
+What is a snapshot image and docker image?
+About images, containers, docker deamon, docker client, docker store
+How to create or customize docker images?
+How to get Docker Images and how to list available docker images?
+How to pull / download docker images?
+
+29/8/2018
+Viewed detailed information about Docker Images using command # docker insepect <image-id>
+Get to know the history of the docker images.
+Took backup of an image by archiving it using the image id 
+Listed the folder to confirm the docker Image ID is saved or not.
+Removed a single image using image id, also deleted multiple images using docker commands
+Restored the deleted image by loading the backup file of that particular image
+Removed all docker images in a single command and done documentation work on the above.
+
+
+
+
+
+
+
+
+---------------------------------------------------
+docker tasks:
+
+git hooks
+docker hooks
+docker file
+docker file best practices
+iib on docker
+mq on docker
+docker fiel > git hub repo > jenkins
+
+------------------------------------------------------------
+Docker links:
+https://www.learnitguide.net/2018/02/what-is-container-what-is-docker.html > containers
+https://www.learnitguide.net/2018/04/what-is-docker-get-started-from-basics.html > docker
+https://docs.docker.com/machine/overview/ > docker machine
+
+---------------------------------------------------------------------------------------------------------------
+Or maybe you want to see an ASCII art tree of all the branches, decorated with the names of tags and branches: 
+git log --graph --oneline --decorate --all
+See only which files have changed: 
+git log --name-status
+git log --graph
+gist log --oneline --graph
+
+log graphing: 
+============
+
+https://zwischenzugs.com/2016/06/04/power-git-log-graphing/  > 1/8
+https://gist.github.com/datagrok/4221767 - git log graphing    ||
+https://zwischenzugs.com/2016/06/04/power-git-log-graphing/    ||
+
+https://stackoverflow.com/questions/35780773/how-to-get-git-log-name-status-to-work-with-merge-commits
+https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+
+---------------------------------------------------------------------------------------------------------------
 
 
 
@@ -1598,6 +1849,9 @@ tag
 For being cool (most versioners can't even do these):
 bisect
 rebase
+
+
+
 -------------------------------------------------------------------------------------------------------------------
 
 Jenkins:
@@ -1623,6 +1877,8 @@ Reference: https://www.tutorialspoint.com/jenkins/jenkins_git_setup.htm
 https://www.cloudbees.com/blog/using-git-jenkins
 In your Jenkins Dashboard (Home screen), click the Manage Jenkins option on the left hand side.
 github branches in jenkins
+111111111111111111111111111111111
+
 --------------------------------------------------------------------------------------------------------------------
 
 personal:
@@ -1639,7 +1895,8 @@ ifsc - KVBL0001417
 
 116+k+s(rng)
 108r+116+16rnds(rng)
-111111111111111111111111111111111
+
+
 --------------------------------------------------------------------
 
 ppts on git:
@@ -1653,3 +1910,6 @@ error: Could not fetch origin
 
 
 git config http.sslVerify false
+abcd@1234Z
+
+
