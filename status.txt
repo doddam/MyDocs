@@ -1652,7 +1652,7 @@ How to get Docker Images and how to list available docker images?
 How to pull / download docker images?
 
 29/8/2018
-Viewed detailed information about Docker Images using command # docker insepect <image-id>
+Viewed detailed information about docker images using docker command # docker insepect <image-id>
 Get to know the history of the docker images.
 Took backup of an image by archiving it using the image id 
 Listed the folder to confirm the docker Image ID is saved or not.
@@ -1660,10 +1660,109 @@ Removed a single image using image id, also deleted multiple images using docker
 Restored the deleted image by loading the backup file of that particular image
 Removed all docker images in a single command and done documentation work on the above.
 
+30/8/2018
+Worked with the following,
+Pulled a docker image "ubuntu" from the doker hub.
+Searched for the image that I need from the list of images by using grep command.
+Created a docker container from the docker image which is an instance of the image.
+Used the docker command to show only the running containers.
+Used the docker command to show both the running and stopped containers.
+Used the docker command to show most recently running container and done the documentation on the above.
+
+31/8/2018
+Added a tag name and repository name to the docker image.
+Done documentation on docker file instructions and explained with examples:
+FROM instruction used to specify the valid docker image name.
+MAINTAINER instruction specifies about the author who creates the new docker image for the support.
+COPY instruction copy files, directories and remote URL files to the destination within the filesystem of the Docker Images. 
+RUN instruction used to execute any commands on top of the current image which will create a new layer
+CMD instruction sets a command to be executed when running a container. 
+WORKDIR instruction sets the working directory.
+ENV instruction sets environment variables with key and value and etc.
+The way how comments are mentioned in the docker file with an example.
+
+10/9/2018
+Got to know about the following things and their objectives,
+What is release management and release management support ?
+What are the responsibilities of release management ?
+What is release planing and release build ?
+What is release deployment, early life support and release closure?
+What is a release or a release package and release record ?
+What is a release unit and configiuration items ?
+
+12/9/2018
+Done the documentation on the following,
+What is a dockerfile and why it is required ?
+How to write a dockerfile by following the dockerfile instructions ?
+Created a simple dockerfile for ngnix.
+Explained some of the dockerfile commands used in the file.
+Built the new image using the command # docker build <path> where path refers to the directory containing the Dockerfile.
+
+13/9/2018
+Working with the following scenario,
+Created a dockerfile under the /root directory.
+Defined the instructions to customize the existing docker image as per the requirement.
+Built a docker image from the dockerfile from the instructions.
+Ran and tested my customized docker image by launching a docker container
+
+14/9/2018
+Worked with and done documentation on the scenario to create a customized image and push into the docker hub,
+Created a docker image and named it with a tag and a repository name
+Pushed the image to the docker hub by providing the login credentials of docker hub in the terminal
+Troubleshooted the issue "Error response from daemon: You cannot push a "root" repository. Please rename your repository to docker.io/<user>/<repo> "
+Customized docker image is now available in the docker hub
+I have logged in to the https://hub.docker.com/ and checked for my new image in the repository list.
+
+17/9/2018
+Done documentation on the following,
+How to create a dockerfile under the /root directory.
+How to define the instructions to customize the existing docker image.
+How to build a docker image from the dockerfile using the instructions.
+How to add a tag name and repository name to the image using the image reference id
+How to run and test my customized docker image by launching a docker container.
+Troubleshooting the issue# E: Unable to locate package nginx while building a dockerfile.
+
+18/9/2018
+Toubleshooted the issue#  Another application is holding yum lock .. by removing the file yum.pid in /var/run/
+Troubleshooted the issue# E: Unable to locate package nginx while building a dockerfile.
+Built a docker image (Apache webserver) successfully by,(DEVOPS GUY! - https://www.youtube.com/watch?v=EGWW7_eCeKA)
+Creating a dockerfile using the given instructions.
+Building the docker image from the dockerfile
+Running the docker container and checked the status of the launched docker container.
+Checked the web browser for the apache webserver.
 
 
+Done mapping of the ports for running the webserver in the browser.
+Done documentation on the scenario building apache webserver image from the dockerfile
+By creating dockerfile using the docker instructions to install apache webserver.
+On how to build the docker image from the dockerfile using docker command
+How to run the docker container and how to check the status of the launched docker container.
+How to check the web browser for the apache webserver.
 
 
+Start the ubuntu container using its id and the enter to it using docker exec -it id bash
+(ref: https://www.youtube.com/watch?v=fdQ7MmQNTa0)
+
+check or work with:
+https://www.youtube.com/watch?v=wtImJTte-9E - ibm mq on docker
+renam the repo name and tag name for an existing image
+rmove tag name withut rmvng image
+how to save multiple docker files in same dirctory
+dockerfile to run and chk it in browser-https://www.learnitguide.net/2018/06/write-dockerfile-to-build-own-images.html
+
+FROM instruction used to specify the valid docker image name.
+MAINTAINER instruction specifies about the author who creates the new docker image for the support.
+--LABEL instruction used to specify metadata informations to an image which is a key-value pair.
+--EXPOSE instruction informs about the network ports that the container listens on runtime
+COPY instruction copy files, directories and remote URL files to the destination within the filesystem of the Docker Images. 
+RUN instruction used to execute any commands on top of the current image which will create a new layer
+CMD instruction sets a command to be executed when running a container. 
+--VOLUME instruction is used to create or mount a volume to the docker container from the docker host filesystem.
+--USER instruction sets the username,group name, UID and GID for running subsequent commands. 
+WORKDIR instruction sets the working directory.
+ENV instruction sets environment variables with key and value.
+--ONBUILD instruction specifies a command that runs when the image in the Dockerfile is used as a base image for another image.
+How does the comments are mentioned in the docker file with an example
 
 
 
@@ -1676,7 +1775,14 @@ docker file
 docker file best practices
 iib on docker
 mq on docker
-docker fiel > git hub repo > jenkins
+docker file > git hub repo > jenkins
+pull jenkins in docker
+diff btw arg and env (ref: https://www.learnitguide.net/2018/06/dockerfile-explained-with-examples.html)
+diff btw entry point and cmd(https://www.learnitguide.net/2018/06/dockerfile-explained-with-examples.html)
+add instruction
+docker tutorial -> build a sample image
+
+Reference: docker tutorial
 
 ------------------------------------------------------------
 Docker links:
@@ -1881,6 +1987,7 @@ github branches in jenkins
 
 --------------------------------------------------------------------------------------------------------------------
 
+
 personal:
 --------
 pb887766@gmail.com
@@ -1913,3 +2020,6 @@ git config http.sslVerify false
 abcd@1234Z
 
 
+release management
+web server - apache 
+appl ser - was,jboss,apache tomcat
