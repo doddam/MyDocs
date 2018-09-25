@@ -1731,13 +1731,47 @@ Building the docker image from the dockerfile
 Running the docker container and checked the status of the launched docker container.
 Checked the web browser for the apache webserver.
 
-
+19/9/2018
 Done mapping of the ports for running the webserver in the browser.
 Done documentation on the scenario building apache webserver image from the dockerfile
 By creating dockerfile using the docker instructions to install apache webserver.
-On how to build the docker image from the dockerfile using docker command
+Explained docker instructions used in the dockerfile.
+On how to build the docker image from the dockerfile using docker command.
 How to run the docker container and how to check the status of the launched docker container.
 How to check the web browser for the apache webserver.
+
+20/9/2018
+Worked with the dockerfiles to know the differences between CMD and ENTRYPOINT instructions.
+Created two dockerfiles, one file with CMD instruction and the other with ENTRYPOINT instruction.
+Images are built and also created tags using "docker build -t cmdchk:latest ." and "docker build -t epchk:latest ."
+Tested the containers with newly created images.
+Checked the logs of newly created containers to ensure the application script has run or not
+Again ran the new containers by passing the argument "date" and once again tested the logs to check the differences.
+
+21/9/2018
+Done documentation on the following, (scenario to show the difference between docker CMD and ENTRYPOINT explained in detailed)
+What is the usage of both the instructions CMD and ENTRYPOINT ? 
+What are the declarations that can be made in CMD and ENTRYPOINT instructions in shell form and executable form ?
+How to create the scripts using CMD instruction and ENTRYPOINT instuction to show the difference between them ?
+How to built the scripts and how to create the tags and ran them to create the containers ?
+To check the logs and also how to pass an argument to the instructions inorder to the know the complete difference between the instructions.
+
+24/9/2018
+Working with the scenario integrating IBM Integration Bus with the docker.(ref:https://github.com/ot4i/iib-docker)
+Pulled the latest IIB image from the docker hub where the image contains a full runtime installation of IBM Integration Bus.
+Ran the new container of the IBM Integration Bus (IIB) image by accepting the license and exposing the port.
+Created a broker and a default integration server by running the IIB container.
+Basing on the container name, searched for and got the ip address by using the docker inspect command.
+Browsed using the IP address and the port number and the GUI of IBM Integration Bus is opened in the browser.
+
+25/9/2018
+Working with the scenario integrating docker and IBM Integration bus.
+For working with the above mentioned scenario, done the following steps:
+Created a message flow in IBM Integration Bus and generated a bar file in the toolkit.
+Opened the WEB UI of IIB in the browser by typing the docker client IP address along with port number where docker is installed.
+Deployed the bar file in the WEB UI of IBM Integration Bus.
+Troubleshooting the issue "Deployment of the bar file of webservices message flow to default server has failed".
+
 
 
 Start the ubuntu container using its id and the enter to it using docker exec -it id bash
@@ -1745,7 +1779,7 @@ Start the ubuntu container using its id and the enter to it using docker exec -i
 
 check or work with:
 https://www.youtube.com/watch?v=wtImJTte-9E - ibm mq on docker
-renam the repo name and tag name for an existing image
+rename the repo name and tag name for an existing image
 rmove tag name withut rmvng image
 how to save multiple docker files in same dirctory
 dockerfile to run and chk it in browser-https://www.learnitguide.net/2018/06/write-dockerfile-to-build-own-images.html
@@ -1781,6 +1815,8 @@ diff btw arg and env (ref: https://www.learnitguide.net/2018/06/dockerfile-expla
 diff btw entry point and cmd(https://www.learnitguide.net/2018/06/dockerfile-explained-with-examples.html)
 add instruction
 docker tutorial -> build a sample image
+MQ Performance in a Docker container > https://developer.ibm.com/messaging/2017/10/19/mq-performance-docker/
+https://www.youtube.com/watch?v=YT3b8mJhp8o > docker instructions (cmd,entrypoint)
 
 Reference: docker tutorial
 
@@ -2023,3 +2059,9 @@ abcd@1234Z
 release management
 web server - apache 
 appl ser - was,jboss,apache tomcat
+
+
+wifi pwd
+uname-domain name
+pwd-Miracle@1
+
