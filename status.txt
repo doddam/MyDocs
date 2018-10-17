@@ -1765,15 +1765,183 @@ Basing on the container name, searched for and got the ip address by using the d
 Browsed using the IP address and the port number and the GUI of IBM Integration Bus is opened in the browser.
 
 25/9/2018
-Working with the scenario integrating docker and IBM Integration bus.
-For working with the above mentioned scenario, done the following steps:
+For the scenario integrating docker and IBM Integration bus, I have done with the following steps,
 Created a message flow in IBM Integration Bus and generated a bar file in the toolkit.
 Opened the WEB UI of IIB in the browser by typing the docker client IP address along with port number where docker is installed.
 Deployed the bar file in the WEB UI of IBM Integration Bus.
 Troubleshooting the issue "Deployment of the bar file of webservices message flow to default server has failed".
 
+26/9/2018
+Done documentation on the following like,
+How to pull the latest IIB image from the docker hub where the image contains a full runtime installation of IBM Integration Bus.
+How to run the new container of the IBM Integration Bus (IIB) image by accepting the license and exposing the port.
+How to created a broker and a default integration server by running the IIB container.
+How to search for and get the ip address using the docker inspect command basing on the respective container name.
+How to browse the GUI of IBM Integration Bus in the browser using the IP address and the port number.
+
+27/9/2018
+Troubleshooted the following issue,
+Error response from daemon: devmapper: Error mounting '/dev/mapper/docker-8:3-269536477-cd6732d0edad34d1b5b48234d7c2f839c69f1c735f7994226d50a70c2d4be008' on '/var/lib/docker/devicemapper/mnt/cd6732d0edad34d1b5b48234d7c2f839c69f1c735f7994226d50a70c2d4be008'. fstype=xfs options=nouuid,context="system_u:object_r:svirt_sandbox_file_t:s0:c352,c373": structure needs cleaning
+<1>[  254.847093] XFS (dm-1): metadata I/O error: block 0x521580 ("xlog_recover_do..(read#2)") error 117 numblks 16
+<4>[  254.847568] XFS (dm-1): log mount/recovery failed: error 117
+<4>[  254.847744] XFS (dm-1): log mount failed
+Error: failed to start containers: 70f5574d8b11
+Troubleshooting the issue The deployment of a BAR file to the default server has failed BIP2087 in IIB while integrating with the docker.
+
+28/9/2018
+Solving the issue for deploying the bar file in run time environment of iib,
+To test the deployment of the bar file, have created a new node and a new integration server and deployed the bar file.
+Tested deploying the bar file by creating another docker image and also tested by deploying other bar files.
+Started the container and then ran ibm integration commands by issuing the docker exec command in the respctive container.
+Ran a new container for ibm integration bus along with the arguments broker and server.
+
+1/10/2018
+Deployed the bar file successfully in the integration server that is run time environment of ibm integration bus WEBUI.
+As per the requirement and the scenario docker and iib integration, have installed the toolkit ibm integration bus fix pack.
+Resolving the following issue:
+mqsiprofile has not been run in this environment: LocalIAPIConnect (Not found in java.library.path) 
+Check that, 
+	1. The integration node is running.
+	2. The TCP/IP port used by the integration node's web user interface is active.
+	3. The integration node name provided in the connection details matches the name of the integration node if the node is remote.
+
+2/10/2018
+Created an application with HTTP nodes in IBM integration bus toolkit.
+Deployed the new application in the run time environment of IBM integration bus web UI integrated with docker
+Turned the flow statistics on for the resource and checked the messsage flow and flow details in the statistics.
+Configured the remote integration node by providing the connection details of the host.
+Troubleshooting the issue mqsiprofile has not been run in this environment: LocalIAPIConnect (Not found in java.library.path) while connecting to the remote integration node.
+
+3/10/2018
+Successfully done working with the POC i.e., integrating Docker and IBM Integration Bus (IIB)
+Resolved the follwoing issues:
+Issue#Error getting response; org.apache.http.conn.HttpHostConnectException to given url is refused
+Isuue#Error getting response: java.net.SocketTimeoutException: Read timed out
+Downloaded and Installed SoapUI on CentOS using Shell script.
+Created a new Rest project in SoapUI to test the restful web service of an application which is deployed in the docker WEB UI.
+Using the docker host ip and the port assigned to the network application, gave a hit to an IIB application present in docker's run time environment got the response from docker WEB UI.
+
+4/10/2018
+Doing the documentation on how the Docker and IBM Integration Bus (IIB) are integrated (on CentOS 7)
+Steps to pull the latest iib image from docker hub and view the image using docker command.
+Steps on how to run a container with default configuration and view the containers list that are running.
+Steps for connecting to the Node's web user interface and mapping to the ports.
+Steps on how to view and issue the docker host ip and port on the browser to view the run time environment WEB UI of IIB.
+Steps for creating a new application in IBM integration toolkit 10.0.0.11 and develop a message flow in the application containing HTTP nodes.
+Steps for configuring the node properties in the message flow and creating a bar file for the application in the IBM integration toolkit.
+
+5/10/2018
+Completed doing the documentation work on how the Docker and IBM Integration Bus (IIB) are integrated (on CentOS 7)
+Steps for deploying the generated bar file in the WEB UI of IIB.
+Steps on how to reslove the issues if the bar file deployment was not successful.
+Steps for Downloading and installing the SoapUI via shell script on CentOS 7.
+Post installation steps to launch the SoapUI.
+Steps to create a new rest project in SoapUI and save the projects. 
+Steps on how to hit the message flow using the url and get the response from the docker 
+Steps on how do I resolve the issues regarding SoapUI that I have faced while working with the scenario.
+
+8/10/2018
+Got to know regarding few other docker instructions and working with the following docker port commands,
+How to view a list of the ports defined on a container and lists all port mappings or a specific mapping for a Docker container.
+The instruction EXPOSE which tells about Docker the running container listens on specific network ports. 
+How to publish the ports and how to map them to the docker host.
+Getting to know about the docker compose expose versus ports.
+(Ref link: https://medium.freecodecamp.org/expose-vs-publish-docker-port-commands-explained-simply-434593dbc9a3)
+
+9/10/2018
+Worked with the optional arguments of docker run command such as,
+Used option --name to assign a name to the container with an image name.
+Used option --rm like the bash command rm it removes the container, but when it exits.
+Used option -i short, for -interactive ensures STDIN is kept open even if not attached to the running container
+Used option -t that is referenced with -tty , starts an interactive bash shell in the container
+Got to know the importance of docker compose which is used to run multiple containers as a single service.
+Working with docker exec command and with its options to run a command in an existing container.
+(Ref: https://medium.com/the-code-review/docker-run-vs-exec-deep-dive-into-their-differences-19a1041735a3)
+
+10/10/2018
+Working with the scenario DOCKER NGINX WEB SERVER - FILE SHARING/COPYING & DOCKERFILE  
+Searched for and pulled the Nginx official image from Docker Hub.
+Created an instance of Nginx in a Docker container by using the default configuration.
+Verified that the container was created and is running or not and also checked the port mappings using docker command.
+Verified whether Nginx is running by making an HTTP request to the port 32768 in the browser by issuing docker host IP.
+Nginx web server is successfully installed and container is up and running as the welcome page of ngnix was displayed.
+
+11/10/2018
+--exposing the port on the nginx server which is port 80 to the port 8080 on the Docker Host
+--you browse to the URL http://dockerhost:8080. This shows that the nginx container is up and running.
+
+11/10/2018 (docker host lo unna directory container lo petali)
+Working with Nginx web server further to keep the content and configuration on the Docker Host.
+Mounted a local directory on the Docker host to a directory in the container.
+Provided a docker run command with option 'ro' to make a change to the files in the local directories on the Docker host are reflected in the container.
+Created a html page with the message "Welcome to ngnix - from docker host machine".
+Troubleshooting the error 403 forbidden in the ngnix web server while browsed the url using docker host IP and with the mapped port.
+
+12/10/2018
+Resolving the error 403 by using the below steps in the ngnix web server to view the welcome page when its url is browsed
+Copied the content and configuration files from a local directory on the Docker host when created the container.
+Created a Dockerfile from the base image i.e., Nginx image which is pulled from the Docker Hub. 
+Used docker build command to generate the docker image from the Dockerfile.
+Verifying the Dockerfile which is pulled from the docker hub as docker image is not build from the docker file.
+
+15/10/2018
+Troubleshooting the issue that the docker image is not built from the docker file when pulled it from the docker hub.
+Created new directories from dockerfile using docker command RUN instruction to cope up with the above issue.
+Also copied the files from one directory to the other directory using the following docker instructions,
+Wrote a docker file using WORKDIR instruction to create sub directories within a directory.
+Also used the docker instruction COPY and wrote a docker file to copy the content of file from one directory to the other.
+Worked with the docker instuction ADD to copy a single file to the docker image.
+
+16/10/2018
+Done the documentation on the scenario to show the steps for setting up the Nginx web sever on Docker.
+Prerequisites required to know about the scenario like what is a web server, web server on hardware and software?
+A brief explanation on the creation of static and dynamic web servers with an example diagram how request is sent and received the response from the http server.
+How to pull the latest nginx image from docker hub and how the default ports that are mapped for the nginx server on docker host.
+How to verify that Nginx is running by making an HTTP request to the dynamically mapped port 32768 using docker host to view the default Nginx welcome page.
+
+17/10/2018
+Working with the scenario for creating and running a new instance of nginx also changing the default content in the html file.
+Created an nginx web server instance and bound it with the port 80 in docker host.
+Verified nginx web server for its default content present in the index.html file.
+Created a new html index file in my computer / host in local path with required content.
+Stopped the running container and attached the local directory that is created in the host to the nginx container.
+Again ran a new instance of nginx web server to create other container with modified configuration.
+Opened the browser and provided the details of docker host and port to check the content of newly created html file.
+
+(Ref: https://www.tutorialspoint.com/docker/docker_setting_nginx.htm > to create a sample html page and host it in the docker)
+(Ref: https://www.digitalocean.com/community/tutorials/how-to-run-nginx-in-a-docker-container-on-ubuntu-14-04 > continue the task)
+(Ref: https://stackoverflow.com/questions/23439126/how-to-mount-a-host-directory-in-a-docker-container > mounting a directory)
+(Ref: https://stackoverflow.com/questions/31640660/how-to-use-dockers-copy-add-instructions-to-copy-a-single-file-to-an-image > use copy /add instructions)
+
+Work with the following:
+------------------------
+doc on nginx web server
+copy vs add (go)
+doc on what is nginx wiki and features and diff btw ngnix and apache server
+how an nginx image is pulled and run the container from docker hub
+copy files from one directory to the other from docker file using docker instructions
+(Ref: https://unix.stackexchange.com/questions/409876/what-is-the-purpose-of-the-volume-instruction-in-a-dockerfile) mount using volume instruction
+https://unix.stackexchange.com/questions/409876/what-is-the-purpose-of-the-volume-instruction-in-a-dockerfile - purpose of volume instruction in dockerfile
+https://unix.stackexchange.com/questions/3192/what-is-meant-by-mounting-a-device-in-linux > mounting in linux
+use of env variables
 
 
+Have created a container using the docker image by running the docker run command.
+to mount a host directory into a Docker container so that any updates done on the host is reflected into the Docker containers.(nginx copy content)
+
+Solve iib error in toolkit and console  > set environment variables for java path
+how and where to set the java path in env variables for iib installation??????
+
+(Ref: https://www.bogotobogo.com/DevOps/Docker/Docker_Nginx_WebServer.php
+https://hub.docker.com/_/nginx/)
+
+12949
+12899 50 tax
+12438 - 461 rps per day
+
+
+	
+docker tasks: https://www.bogotobogo.com/DevOps/Docker/Docker_Container_vs_Virtual_Machine.php
 Start the ubuntu container using its id and the enter to it using docker exec -it id bash
 (ref: https://www.youtube.com/watch?v=fdQ7MmQNTa0)
 
@@ -2021,6 +2189,8 @@ In your Jenkins Dashboard (Home screen), click the Manage Jenkins option on the 
 github branches in jenkins
 111111111111111111111111111111111
 
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 
@@ -2064,4 +2234,116 @@ appl ser - was,jboss,apache tomcat
 wifi pwd
 uname-domain name
 pwd-Miracle@1
+
+
+224526 > kv
+NewPwd@1 > mss wifi pwd
+abcd@1234Z > mailcorp
+
+
+Business logic (IIB)
+--------------------
+
+Simply integrates any dissimilar application/System there are around 100 components which are available in the IIB which are called nodes for 
+this purpose
+
+you can route transform enrich data and provide decoupling between your integration system
+ and it can act as an integration layer between systems
+
+Christus health care is a non profit organization.
+
+Health Level-7 or HL7 refers to a set of international standards for transfer of clinical and administrative data between software applications used by 
+various healthcare providers. These standards focus on the application layer, which is "layer 7" in the OSI model. The HL7 standards are produced by the
+Health Level Seven International, an international standards organization, and are adopted by other standards issuing bodies such as American National 
+Standards Institute and International Organization for Standardization.
+
+Sends HL7 data (of the patients) from one system to the other system 
+
+Hospitals and other healthcare provider organizations typically have many different computer systems used for everything from billing records to 
+patient tracking. All of these systems should communicate with each other (or "interface") when they receive new information, or when they wish to 
+retrieve information, but not all do so.
+
+Patient data in the form of HL7 segments.
+
+Develop the Flows in IIB and implement the logic in eSQL Code based on the understanding of Pseudo Code provided.
+Configured SVN repository with Message Broker and daily check in and checkout / version control of the source code.
+Prepared test cases for the developed message flows.
+Basic unit testing of the Integration flows. 
+
+The business perspective of this project is
+
+The health related transactions like patient admission, observation, visiting information, physician allocation and Medical information are manipulated
+ in the HL7 messages. 
+HL7 messages are international message standards for health care transactions in USA. All the transactions are automated and processed in between the 
+systems.
+
+The HL7 message will be transmitted from the source to target systems and vice versa. The sourcesand target applications are Meditech, Midas , 
+Mosaiq and Atheena etc. These applications are be configured to process HL7 messages only.
+
+Technically:
+
+IIB/WTX placed in between source and target applications in order to transform, enrich and route the HL7 messages.
+
+We have implemented three flows:
+
+One flow is to get the source message for source application and send the positive/negative acknowledgement back to source system. This flow is named 
+as 
+Receiver Flow. This flow will get the message from source over tcp/ip protocol.
+
+Second flow is to implement business logic based on specification document and sends the resultant message to third flow. This flow is named as 
+transform 
+flow
+
+Third flow will get the resultant message from transform flow and sends the message to the target application and gets acknowledgement message from 
+target 
+system. This flow is named as sender flow.
+
+The business logic will be implemented in esql language. And the communication between receives flow and transform flow is can be get accomplished by 
+Publication and subscription.
+
+--------------------------------------------------------------------------------------------------------------
+
+
+Scenario-1 : create instance of nginx and change the content in the html page in nginx server
+
+how to make a docker conatainer and instantiate an nginx as a container with docker and bind it with the localhost as lookout wevbserver for static html files
+Instal docker and pull nginx image
+(Assigned port 80 to localhost)
+docker run -p 80:80 -d nginx (d > detach mode)
+docker with nginx is running and bound to the port 80 on coputer(docker host)
+curl localhost (can see the content of index html that running nginx of port 80)
+
+
+
+
+
+Now I want to change the content of html page
+First create html index file in our computer / host in local path
+mkdir nginxfiles
+cd ||
+mkdir html
+cd ||
+vi hellowrld
+hlowrld
+<html>
+<body>
+<h1> hw</>
+</body</html
+stop the running container
+Attach the local directory that is created in the host to the nginx container
+docker run -p 80:80 -d -v /root/nginxfiles/html/:/usr/share/nginx/html/ nginx (v > to attch the newly created folder to the web folder of nginx )
+now instance is running and listening to the port 80
+use curl localhost 
+and thus content of the index file of the nginx is changed.
+check the web browser of local host
+
+
+docker run --name changehtmlfile -p 80:80 -d -v /root/nginxfiles/html/:/usr/share/nginx/html/ nginx 
+docker run --name changehtmlcontent -p 80:80 -d -v /root/nginxfiles/html/:/usr/share/nginx/html:ro nginx
+docker run --name my-nginx-2 \ -v /var/www:/usr/share/nginx/html:ro -P -d nginx
+
+docker run --name changehtmlcontent \ -v /var/www:/usr/share/nginx/html:ro -p 80:80 -d nginx
+
+Scenario-2: copy other file into the nginx server without stoping the webserver
+
 
