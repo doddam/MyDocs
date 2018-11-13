@@ -1908,14 +1908,244 @@ Stopped the running container and attached the local directory that is created i
 Again ran a new instance of nginx web server to create other container with modified configuration.
 Opened the browser and provided the details of docker host and port to check the content of newly created html file.
 
+18/10/2018
+When browsed to view the modified content in Nginx web server, it responded with 403 when the files are mounted.
+Troubleshooted the above mentioned issue in the following ways,
+Mounted the directory where the container is prsent and its contents publicly readable.
+Checked the permissions from inside the container as it shows correct permissions and changed them.
+Used curl for getting or sending files using URL syntax which is a ommand line tool.
+
+19/10/2018
+I have used curl for sending files from command line but showing the below issue,
+curl: (7) Failed connect to localhost:80; Connection refused
+Re-installed the curl tool on centos, unarchieved the zip file in appropriate directory structure and checked for the version, tool worked fine.
+Again tried connecting to docker using curl, then connected to the localhost of docker after starting up the container and displalyed the content from html file.
+Now I have changed the content in the html file and mounted files from local system to the docker's host machine and now connected to the docker using curl, static data is displayed instead of modified data.
+Troubleshooting the above issue inorder to display the required data from the html file after connecting to docker using curl.
+
+22/10/2018
+Mounted the files successfully from local system to the docker host machine in the process of hosting a simple web page into the ngnix container.
+The nginx web server has received and understood the request, but unable to take the further action as 403 is a http status code that has been occurred on the browser.
+Resolving it by correcting the configuration file that specifies to load the correct index file where nginx server looks for.
+Configured the permissions of each directory at nginx location to 755 by using the respective commands.
+Also configured the permissions of all files inside the directory of nginx folder to 644 by using the respective commands.
+
+23/10/2018
+Created and ran an nginx instance in docker container using interactive session with bash shell.
+Done working with the scenario copying files from host machine to the docker container's file system.
+Used docker cp command to serve for copying files and folders between Docker container and a host machine.
+Also worked with the scenario for copying files from a docker container to the local filesystem or host machine.
+Completed the documentation work on both the scenarios file copy between docker container and host machine & vice versa.
+
+24/10/2018
+Done working with a scenario to deploy static website as a container and run Static Website Using Docker by,   
+Creating two files index.html file which has a static content and a dockerfile in the newly created directory.
+Creating a dockerfile from a base image nginx to change the location of html file from localfilesytem to the nginx web server directory.
+Built a docker image from the dockerfile with the name “static-app” and also tag name “v1” using docker build command.
+Ran the container by issuing the port number and the image name in detached mode and verified the containers list and checked docker images list.
+Open the browser and provide the details of docker host IP and the port that is assigned to the nginx container and the static content is displayed on the browser.
+
+25/10/2018
+Verified the logs of the docker by providing respective container name.
+Done documentation on the scenario on how to deploy static website as a container and run the website using Docker.
+Steps for creating two files index.html file and dockerfile in the newly created directory.
+Steps for building a docker image from the dockerfile using the base image nginx using docker instructions.
+Steps on how to create a new nginx instance by running the container.
+Steps on how to view the static content on the browser by providing the docker host IP and the port that is assigned to the nginx container.
+Steps to view the log files for the required event that was made on a respective container.
+
+26/10/2018
+Got to know about Redis which is an open source, BSD licensed, advanced key-value store also referred to as a data structure server.
+Installed docker-compose using yum command and checked for its version after installation.
+Pulled a docker image redis from the docker hub and verified in the list of docker images.
+Working with the scenario for linking the containers using docker by,
+Running a new redis server container "redisserver" by creating a new instance by using the image redis and verified the docker's container list.
+Also ran another client container "redisclient1" and linked it with the redisserver container using the flag --link.
+
+29/10/2018
+Verified the file /etc/hosts to make sure that the client container is reachable to the linked server container or not and communicate server using alias name.
+After linking, confirmed for the connection details by entering the (host) redis server to the client and tested the ability of the redis client to reach the redis server.
+Inserted few key-value pairs into the database using SET key value command and stored them in the container redisclient1 which is linked to the redisserver.
+Retrieved the data using GET key command, also appended few values to existing values, viewed the length of the string, set the expiry of a key using redis string commands.
+Ran another redis client container "redisclient2", same linked it with the redisserver container using the flag --link and verified connection details same as made with "redisclient1"
+Retrieved the data from the container redisclient1 and displayed it in the redisclient2 by using redis string commands.
+Successfully done linking the containers and made the communication available among them.
+
+30/10/2018
+Doing the document work on the scenario linking the containers of redis server and the redis clients.
+What is the use of linking containers?
+What is redis, how many data types are used in redis and explained one of the data type "strings" which uses redis commands SET and GET.
+Steps to search for required image and pull the redis image from the docker hub, verfiy the list of docker images for the redis image.
+Steps to launch the server container(redisserver) from the redis image, verify the containers list, also to start the server container.
+Steps to run another client container(redisclient) and link it to the redisserver contianer to provide a secure channel via linked containers such that they can communicate to each other.
+Steps to notice the container redisserver has got associated with the redis name and steps to print out the environment variables.
+
+31/10/2018
+Completed doing document work on the scenario linking the containers of redis server and the redis clients.
+Explained how to enter into an existing container and execute the docker commands and how to connect redis client from it.
+Explained the steps on how to execute some of the standard redis commands in the client1(redisclient1) container.
+Explained the steps on how to create the redis client container (redisclient2) in a different terminal by linking it to the server container.
+Steps to connect to the redis server via alias name that is specified given in the --link flag while launching the container.
+Steps to retrieve the data in the current client container (redisclient2) from the first client container (redisclient1) that is stored in string key / value pair format.
+
+1/11/2018
+Working with the scenario regarding volumes to persist(save)the data and also to share the data between containers.
+For this scenario, I have pulled the docker image ubuntu from the docker hub account.
+Created a volume in the container(container1) such that I would be able to access it from the required container.
+Ran a new docker container and created a new directory /myvolume in /var folder of ubuntu.
+Used -v flag while creating the container which is needed for mapping the containers on the host machine.
+Created a volume in the container(container1) and entered into the container also created a new file with some content in the newly created volume.
+(Ref: https://www.youtube.com/watch?v=qwXinzD-TGU)
+
+2/11/2018
+Opened a new terminal and created a volume in a new container(named container2) and ran it without exiting the old terminal.
+Navigated to the location where volume is created /var/myvolume in ubuntu, listed for the files and there displayed the file which is created in the first container(container1).
+Verifying whether the file is shared from container's1 volume to the container's2 volume or not by opening the file and checked for the content. 
+We can see the same file with the same content opened in the container2 same as it is in the container1, again modified the file by adding some content to the same file, saved the data and closed the file.
+Moved to the other terminal which is having container1 and once again moved to the same location to verify the reflected data from the container2 for the content whether updated or not.
+Used the option --volumes-from with the name of the first container at run time for accessing the volume from one container to the other.
+Successfully worked with the scenario by creating the volumes and accessing them in the containers also by sharing the data between the containers.
+(Ref: https://www.youtube.com/watch?v=vocqs5QaUQ0&t=0s&index=27&list=PLea0WJq13cnDsF4MrbNaw3b4jI0GT9yKt)
+
+[Task: 
+use -v to map volumes between container and the host machine
+share directories or folders or volumes btw containers (for this, create v in one container and access it in another container)]
+
+5/11/2018
+Done documentation on the scenario sharing directories/folders/volumes between containers and share data between the containers.
+Why volumes came into the existence? What is the use of volumes ? Advantages of volumes and few examples of the volume usage.
+Steps for pulling the ubuntu image from the docker hub account. 
+Steps to run a container by using the docker image with -v flag to create and map volumes between containers.
+Steps to create a new volume and a new file in the volume, opened a new terminal and created a container using the option --volumes-from inorder to share the data from one container to the other container.
+Steps on how to open and check the shared volumes and files in the second container, modify the shared file in second container, cross check it in the first container.
+
+6/11/2018
+Working with and getting to know about the steps in docker compose workflow.
+Steps to define each service in a Dockerfile.
+Steps to define the services and their relation to each other in the docker-compose.yml file.
+Created two applications app1 and app2 in docker terminal.
+Now in the app1, I have created two services, service1 and service2. Created one dockerfile in one service and other dockerfile in another service.
+Build the dockerfile in the service1 and troubleshooting the below issue while running an instance from the docker image.
+#Error response from daemon: oci runtime error: container_linux.go:247: starting container process caused "exec: \"echo\": executable file not found in $PATH".
+
+(Ref: https://blog.codeship.com/orchestrate-containers-for-development-with-docker-compose/)
+(Ref: https://github.com/docker/compose/issues/3530)
+(Ref: https://docs.docker.com/compose/gettingstarted/#step-3-define-services-in-a-compose-file)
+(Ref: https://docs.docker.com/compose/overview/)
+(Issues #https://github.com/docker/compose/issues/3530)
+
+7/11/2018
+Resolved the below issue,
+#Error response from daemon: oci runtime error: container_linux.go:247: starting container process caused "exec: \"echo\": executable file not found in $PATH".
+Created a dockerfile in the second service by using the base image nginx and modified the dockerfile from the first service in application1.
+Built both the docker files successfully in their respective services in app1 directory and ran the services by using the base images ubuntu and nginx respectively.
+Similarly, created an application and service in it with the dockerfile which uses the base image redis.
+Created the docker-compose.yml files with the services in app1 and app2 directories.
+Ran the docker command #docker-compose up where the compose is used to start and run the entire application. 
+
+8/11/2018
+Working with a sample example to combine the docker containers using docker-compose tool with redis layer which is a data structure storage and web layer, a regular web application.
+Installed pip, a powerful tool that helps to manage distribution packages in Python properly .
+Used flask, a good python web microframework focuses on the modularity of code base and redis is a key-value datastore used as a database.
+Created four files python file, docker file, requirements files which contains the list to be installed and a docker-compose file with yaml script in a new directory composetest.
+Used the docker compose up command to start the entire application.
+Solved the issue #ERROR: Service 'web' failed to build and troubleshooting the issue #python: can't open the file 'app.py'.
+
+9/11/2018
+Troubleshooting the issue #python: can't open the file 'app.py' while trying to combine the web application and a data structure.
+Changed the permissions of the python file app.py to make the file executable.
+Modified the application "app.py" for the SyntaxError: invalid syntax while calling a function and changed the syntax. (chmod +x test.py     # This is to make file executables)
+Verified the error and resolved the issue #IndentationError: unexpected indent by updating the app.py application, debugged and ran the aaplication.
+Built the dockerfile successfully which picks up the python image that calls the requirements file to install the flask and redis recursively using option -r.
+Also updated the docker compose file by removing the volumes section and not storing the data in the current directory and no back up provided for the containers.
+
+12/11/2018
+Troubleshooted the following issues,
+#ERROR: yaml.scanner.ScannerError: mapping values are not allowed
+While Building service1 #ERROR: Cannot locate specified Dockerfile: Dockerfile
+Working with the scenario, linking of containers redis and flask using docker-compose tool to cope up the following warnings,
+#1 WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
+#2 WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+#3 WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis.
+
+13/11/2018
+Worked successfully with a scenario to build a simple python web application running on docker compose which uses the Flask framework and maintains a hit counter in Redis.
+Created a new directory and created a new python file app.py with a get_hit_count function.
+Copied the files requirements.txt and Dockerfile from composetest directory, made some changes in the web service of docker-compose file.
+Built, ran and started the application by running the docker command #docker-compose up where compose pulls redis image and builds an image for the code, and starts the services that are defined.
+Pointed the web browser to the url 'http://localhost:5000' using the port 5000 to find the message and number of hits of the message is displayed in the browser.
+Switched to another terminal window, and verified docker images list which should return redis and web and also verified the instances created.
+
+
+
+
+Ran python program app.py 
+{docker compose build
+docker compose up
+run python program
+Use docker-compose up to start the system.}
+
+File "app.py", line 11
+web_1    |     app.run(host="172.17.0.1",debug=True)
+web_1    |     ^
+web_1    | IndentationError: unexpected indent            > changed the host ip
+
+
+
+
+
+
+
+Linking a container ref links:
+https://www.youtube.com/watch?v=zxsX-toqO5k
+https://www.youtube.com/watch?v=uSfW17zs35k
+
+
+
+do doc properly https://www.youtube.com/watch?v=4PvlcTtaAhw
+(scenario (or) hosting a simple web page into the ngnix container.)
+sss
+docker tasks 
+-------------
+docker compose
+docker with jenkins > docker tutorial
+docker rails > https://jee-appy.blogspot.com/2017/01/running-rails-application-with-docker.html
+what is detached mode in docker ?
+connecting docker with curl
+https://hackernoon.com/docker-tutorial-getting-started-with-python-redis-and-nginx-81a9d740d091
+
+
+"403" is actually an HTTP status code that means that the web server has received and understood your request, but that it cannot take any further action.
+
+
+curl -H 'Host: project1.loc' http://127.0.0.1/something
+curl -H 'Host: /var/www/html/' http://172.17.0.1:80
+
+docker run --name hostfile -p 8080:80 -v /docfiles/Nginx:/usr/share/nginx/html:ro –d nginx 
+http://dockerhost:8080/hw.html
+http://172.17.0.1:8080/index.html
+When i tried to write host a file in nginx server i am getting 403 forbidden message how to solve it
+
+docker run -p 8080:80 -v /docfiles/Nginx:/usr/share/nginx/html:ro -d nginx 
+
+curl -X HEAD -I http://172.17.0.1:8080
+
+reloded nginx server
+Directory index is not properly defined (https://nginxlibrary.com/403-forbidden-error/)
+accessing directory structure properly
+check Ref: https://www.1and1.com/cloud-community/learn/web-server/nginx/solve-an-nginx-403-forbidden-error/
+
+
+
 (Ref: https://www.tutorialspoint.com/docker/docker_setting_nginx.htm > to create a sample html page and host it in the docker)
 (Ref: https://www.digitalocean.com/community/tutorials/how-to-run-nginx-in-a-docker-container-on-ubuntu-14-04 > continue the task)
 (Ref: https://stackoverflow.com/questions/23439126/how-to-mount-a-host-directory-in-a-docker-container > mounting a directory)
 (Ref: https://stackoverflow.com/questions/31640660/how-to-use-dockers-copy-add-instructions-to-copy-a-single-file-to-an-image > use copy /add instructions)
+(Ref: https://gadelkareem.com/2012/02/27/upgrade-curl-7-24-on-centos-6-2/ > curl installation)
+
 
 Work with the following:
 ------------------------
-doc on nginx web server
 copy vs add (go)
 doc on what is nginx wiki and features and diff btw ngnix and apache server
 how an nginx image is pulled and run the container from docker hub
@@ -2190,8 +2420,7 @@ github branches in jenkins
 111111111111111111111111111111111
 
 
-
---------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
 
 
 personal:
@@ -2338,12 +2567,276 @@ and thus content of the index file of the nginx is changed.
 check the web browser of local host
 
 
+
 docker run --name changehtmlfile -p 80:80 -d -v /root/nginxfiles/html/:/usr/share/nginx/html/ nginx 
-docker run --name changehtmlcontent -p 80:80 -d -v /root/nginxfiles/html/:/usr/share/nginx/html:ro nginx
+final : docker run --name changehtmlcontent -p 80:80 -d -v /root/docfiles/Nginx/nginxfiles/html/:/usr/share/nginx/html:ro nginx
 docker run --name my-nginx-2 \ -v /var/www:/usr/share/nginx/html:ro -P -d nginx
+docker run -it --name copyfiles nginx /bin/bash
 
 docker run --name changehtmlcontent \ -v /var/www:/usr/share/nginx/html:ro -p 80:80 -d nginx
 
 Scenario-2: copy other file into the nginx server without stoping the webserver
 
+chmod -R o+rX /var/lib/docker/containers
 
+
+docker run --rm -it \
+           --name my-website \
+           -p 9999:80 \
+           -v /tmp/webs/my-website:/usr/share/nginx/html \
+           nginx:latest
+
+		   
+		   jenkins:
+		   Install Role-based Authorization strategy plugin
+You can view the following options only when you install the plugin
+Manage and Assign Roles option in Manage Jenkins &
+Role-based Strategy option in Configure Global Security Authorization 
+
+
+linking the containers
+-----------------------
+docker images
+docker run -d --name redisserver redis 
+docker ps 
+start the container
+docker run -it --name redisclient1 --link redisserver:redis redis sh
+cat /etc/hosts
+ping redis
+clear
+redis-cli -h redis     ;h - host
+PING (respones PONG)
+docker run -it --name redisclient2 --link redisserver:redis redis sh
+docker exec -it redisclient1 sh
+
+To save data into database, ran another client redisclient1 and redisclient2
+To make sure the container has been linked or not it can be checked by viewing the file /etc/hosts whether it is reachable by the current container
+IP Address is viwed and can communicate it with the alias name "redis" 
+ping redis
+clear
+Connect to the redis server through the redis client container
+ping > pong
+Lets save some data into the client container
+set name manasa > key value pairs
+append,strlen
+Run another client container(client2) by linking to the server container must receive the data from client1 container
+(set enter in clint1)
+ip adrs can be seen)
+diplay environment variables in the client container using set command 
+Successfully  linked two client containers using server container and worked together
+docker exec -it redisclient1 sh
+https://rominirani.com/docker-tutorial-series-part-8-linking-containers-69a4e5bf50fb - ref fr reids sce
+
+
+
+comic book
+naughty
+best wishes
+
+
+Volumes:
+--------
+ref: https://container-solutions.com/understanding-volumes-docker/
+https://www.youtube.com/watch?v=qwXinzD-TGU --- 1
+https://www.youtube.com/watch?v=vocqs5QaUQ0&t=0s&index=27&list=PLea0WJq13cnDsF4MrbNaw3b4jI0GT9yKt --- 2
+(The Volumes page is where you create the storage containers for your applications, databases, and file systems. A volume is the logical component created for the host to access storage on the array.)
+
+
+
+
+
+stop running c1 , files must be accessed in the c2 in other terminal
+data containers? mapping the volume from the same host
+
+
+docker inspect container1 | less
+less dockerfile
+docker run getmyipaddress
+docker run getmyipaddresshttp://ifconfig.me/ua
+nano dockerfile
+
+
+FROM hello-world
+CMD ["echo", "hello world!"]
+docker build .
+docker run --name s1  c441f48c5c0f
+
+FROM ubuntu
+CMD ["echo", "hello!"]
+
+FROM nginx
+CMD ["echo", "hello!"]
+
+check how docker compose works and how we can combine docker containers with a simple example of redis layer and web layer
+data structure storage - redis layer
+regular web application  - web layer
+
+The Pip Python Package Manager
+Pip, a powerful tool that helps you properly manage distribution packages in Python.
+
+Flask is a good python web microframework which lets you focus only on things you need. There is more focus on the modularity of your code base. Redis is a key-value datastore that can be used as a database.
+(Ref: https://www.youtube.com/watch?v=pFFqGfBeOp0)
+(Ref: https://flask-and-redis.readthedocs.io/en/latest/)
+
+composetest
+https://flask-and-redis.readthedocs.io/en/latest/ - ref
+app.py
+from flask import Flask
+from redis import Redis
+
+app = Flask(__name__)
+redis = Redis(host="redis",port=6379)
+
+@app.route('/')
+def hello():
+  count = redis.incr('hits')
+  return 'Hello World! I have been seen {} times.\n'.format(count)
+
+if__name__=="__main__";
+  app.run(host="0.0.0.0",debug=True)
+
+Dockerfile
+FROM python:3.4-alpine
+ADD . /code
+WORKDIR /code  
+RUN pip install -r requirements.txt
+CMD ["python","app.py"]
+
+docker-compose.yml
+version: '3'
+services:
+  web:
+     build: .
+     ports:
+      - "5000:5000"
+     volumes:
+	  - .:/code
+  redis:
+    image: "redis:alpine"
+	
+	
+Issue# ERROR: Service 'web' failed to build: ADD requires at least two arguments
+
+    build:
+      context: ./service3
+    image: service3
+
+networks:
+  default:
+    driver: bridge
+
+requirements.txt
+flask 
+redis
+
+Dockerfile
+
+
+step - 1: pulled redis image
+step - 2: building the dockerfile
+
+docker-compose file
+--------------------
+version: '2'
+services:
+  service1:
+    build:
+      context: ./service1
+    image: service1
+  service2:
+    build:
+      context: ./service2
+    image: service2
+networks:
+  default:
+    driver: bridge
+	
+	app1 > s1 > df > ubuntu image
+	       s2 > df > nginx image
+	app2 > s3 > df > redis image
+	
+	
+	
+version: '3'
+services:
+  ubuntu:
+    build: .
+    ports: 
+	 -"8080:8080"
+  nginx:
+    image "nginx:latest"
+      
+------------------------------
+dc.yml
+------
+version: '2'
+services:
+  service1:
+    build:
+      context: ./service1
+    image: service1
+  service2:
+    build:
+      context: ./service2
+    image: service2
+
+networks:
+  default:
+    driver: bridge
+------------------------------------
+
+
+task:
+linking docker conatianers using docker compose tool.
+redis server
+redis client 
+
+changed the settings in vm:
+---------------------------
+#WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then 
+reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+/etc/sysctl.conf
+vi sysctl.conf
+vm.overcommit_memory=1
+
+#WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+/etc/rc.local
+vi rc.local
+sysctl -w net.core.somaxconn=65535
+
+/proc/sys/net/core/somaxconn
+To fix this warning you have to set a new config to /etc/rc.local so that the setting will persist upon reboot
+
+#WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the 
+command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. 
+Redis must be restarted after THP is disabled.
+
+
+WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+
+WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then 
+reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+
+WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the 
+command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. 
+Redis must be restarted after THP is disabled.
+
+Ran the command in the root
+added the line echo never > /sys/kernel/mm/transparent_hugepage/enabled in etc/rc.local/
+
+Pulled redis image and created two instances of redis 
+docker run -d --name redis_server redis:latest
+docker run -d --name redis_client redis:latest
+need to link these two containers using docker compose tool
+
+
+
+
+
+
+
+
+
+
+
+(ref: https://blog.codeship.com/orchestrate-containers-for-development-with-docker-compose/)
