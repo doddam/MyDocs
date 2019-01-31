@@ -2076,19 +2076,437 @@ Built, ran and started the application by running the docker command #docker-com
 Pointed the web browser to the url 'http://localhost:5000' using the port 5000 to find the message and number of hits of the message is displayed in the browser.
 Switched to another terminal window, and verified docker images list which should return redis and web and also verified the instances created.
 
+(Ref: https://docs.docker.com/compose/gettingstarted/#step-4-build-and-run-your-app-with-compose
+       https://github.com/docker/compose/issues/3530
+	   https://tecadmin.net/tutorial/docker/docker-compose-example/
+	)
+
+14/11/2018
+Doing the documentation work on the scenario to build a simple Python web application running on Docker Compose. 
+Explained the overview of docker compose and features of docker compose.
+Common use cases where compose can be used in many ways in Development and Automated testing environments.
+Steps to install docker compose on a CentOS 7 server and the prerequisites required for Docker Compose relies on Docker Engine.
+Illustrated an example regarding the configuration required to run a container with Docker Compose.
+Steps to create a new docker compose yml file in a newly created directory to check whether docker compose tool has been installed or not.
+Steps to test the docker compose yml file on a CentOS 7 server by executing the docker compose up command also command to check the tool version.
+
+15/11/2018
+Doing the documentation work on the scenario to build a simple Python web application running on Docker Compose. 
+Steps to get started with Docker Compose real time application by mentioning the prerequisites required.
+Steps to define the application dependencies in a new directory like app.py, requirements.txt, dockerfile and a compose file with the services defined in it.
+Steps on how to build and run the application with the compose tool and point web browser to the url to check the output of the application.
+Steps to switch to another terminal window and verify the list of docker images which should return redis and web.
+Steps to verify the  running instances of the application created from redis and web images.
+(Ref: https://docs.docker.com/compose/gettingstarted/#step-4-build-and-run-your-app-with-compose)
+
+16/11/2018
+Working with the python web application to improve the functionality of the application by adding extra features.
+Ran the application's services in the background in detached mode with docker-compose up and use docker-compose ps to see what is currently running.
+Stopped the app by running docker-compose down from the project directory within a new terminal and used other method by hitting CTRL+C in the original terminal the app is started.
+Edited the docker-compose.yml in project directory by adding a bind mount for the web service to modify the code on the fly, without rebuilding the image.
+Troubleshooting the runtime error that the application file is not found and service cannot start as permission denied.
+
+19/11/2018
+Started the application with compose in the background and used the command #docker-compose stop to stop the services once it has been finished.
+Done documentation on how to use the docker command #docker-compose down to stop the application from the project directory in the second terminal.
+Trying to start the application by creating the volume separately instead of providing it in the docker-compose.yml file by executing into the container.
+Re-built the application once again with some modifications done in python file app.py and the docker-compose.yml file.
+Again ran the application after making few changes with the #docker-compose up command, verifying it as the modifications were not reflected to the application.
+
+20/11/2018
+Created the instances of web and redis, ran the two containers as a single service successfully.
+Modified the application by creating volumes in the container but the changes are not reflected, verifying it by running the application using docker-compose up command.
+Also getting started to work with another application to set up and run a Rails/PostgreSQL app using docker compose in parallel.
+Developing the application by keeping the code inside the image which builds a container with Ruby, Bundler and all the dependencies inside it.
+Getting to know about the gem file and ruby as I would like to use them while developing the application.
+
+(ref link: https://tosbourn.com/what-is-the-gemfile/)
+(ref link: 
+gem -> collection of ruby code
+gemfile -> is a file we create which is used for describing gem dependencies for Ruby programs.  
+bundler -> The bundler is the program which reads the Gemfile and downloads the Gems. We can install the bundler by running:
+
+26/11/2018
+Gone through the tutorials regarding ruby, gem file, gem and gemfile.lock, bundler and got to know about them as they are often used in ruby community.
+How does the gem file looks like where it requires at least one source which tells where to download the Gems. 
+What is the bundler and how do we use the bundler which is a program that reads the Gemfile and downloads the Gems.
+Created a dockerfile to put the application code inside an image to built a container with Ruby.
+
+29/11/2018
+Created a new directory and then created a bootstrap Gemfile in it which loads Rails.
+Also created an empty Gemfile.lock to build the Dockerfile in the new folder already created.
+Defined the services in the docker-compose.yml file describing the docker image and the web app built from the current directory.
+Built the image using `docker-compose build. (or `docker-compose up --build`)
+Generated the Rails skeleton app using the docker command #docker-compose run.
+
+30/11/2018
+Built the image for the web service using the Dockerfile using compose and then it ran rails new inside newly created container, using that image. 
+When trying to start the container, it is not able to start yet. Then I have deleted the images and once again built the same image.
+And then built the image using the docker command and restarted the application by issuing the docker-compose up command.
+A temporary directory has been created in the current directory where the app is built and a db directory is created in tmp directory after the image is built and by running the instance from the image.
+
+3/12/2018
+Changed the ownership of the files to the user for the container which is running as a root user.
+Built the image again as the gem file as it is modified using docker-compose build command.
+Created database.yml file to connect to the database and boot the app with docker-compose up command.
+Trouble shooting the following issues,
+db_1   | chown: cannot read directory '/var/lib/postgresql/data': Permission denied
+railapp_db_1 exited with code 1
+web_1  | Could not locate Gemfile or .bundle/ directory
+
+4/12/2018
+Resolving the issues by performing the following actions,
+Reinstalled docker and docker-compose and set everything up from scratch.
+Got the volume to work by giving the directory the docker group and allowing docker permission to modify the directory.
+Created a dockerfile to Install PostgreSQL on Docker to create a docker image using the dockerfile
+Issued #gnupg, gnupg2 and gnupg1 do not seem to be installed, but one of them is required for this operation when built an image from the Dockerfile while assigned it with a name.
+
+5/12/2018
+Made a setup once again to run a Rails/PostgreSQL app by creating the files dockerfile, docker-compose.yml, gemfile and gemfile.lock
+Installed 41 gems and Bundled gems are installed into `/usr/local/bundle' while creating the instance using the dockerfile.
+Used the docker-compose run command to generate the Rails skeleton app again but the project was not built due to the following issue
+Permission denied @ rb_sysopen - /myapp/README.md (Errno::EACCES), troubleshooting the issue.
+Issue in locating the path, so dealing in tracing the path /usr/local/bundle/bin/rails.
+
+6/12/2018
+Troubleshooting the permission denied issue in the /myapp directory README.md file
+Meanwhile tested whether PostgreSQL is working or not, tried to install PostgreSQL by creating the image through the dockerfile.
+Also working with the other application to compose Django and postgreSQL and getting to know about Django.
+Created an empty project directory and created a new file called Dockerfile in the project directory.
+Created a file called docker-compose.yml in the project directory describes the services web server and database that make the app. 
+
+10/12/2018
+Working with the application to use Docker Compose to set up and run a simple Django/PostgreSQL app.
+Got to know about Psycopg which is a PostgreSQL database adapter for Python.
+Created requirements.txt file in the project directory with the required software in the file.
+Changed to the root of the project directory created the Django project by running the docker-compose run command in a container by using the web service’s image and configuration.
+Trying to find out the suitable configuration file in the directory when ran the docker-compose run command.
+
+11/12/2018
+Connected to the database for django set up by creating settings.py file in the newly created directory
+As running Docker on Linux, the files in the container runs as the root user so changed the ownership of the new files.
+Resolved the issue# changing permissions of ‘composeexample’: Operation not permitted.
+Ran the docker-compose up command from the top level directory of the project.
+Troubleshooting the issue #can't open file 'manage.py': Permission denied
+
+12/12/2018
+Testing django to use a database to build a basic Message Board application where users can post and read short messages. 
+Exploring Django’s built-in admin interface which provides a visual way to make changes to the data.
+Got to know that Django provides built-in support for several types of database backends with just a few lines in our settings.py file it can support PostgreSQL, MySQL, Oracle, or SQLite.
+Created a new directory for the code on the Desktop and navigated to the directory.
+Creating a new app in the newly created project, also modyfing the settings.py file by adding the new app in it.
+
+13/12/2018
+Getting to know about pipenv, which is a Python Dev Workflow for Humans.
+Setting up the basic Django dev environment for working with the django projects which is a web framework.
+Checked the python version by running the command #python -V as unix environments come pre-installed with Python. 
+Ran the command to install pip #easy_install pip is a python package manager, to make the installation easier and upgrade Python packages.
+Also verified for the version control, we’ll be using git. Checked for the current version using the command #git --version
+(https://realpython.com/django-setup/#python)
+
+14/12/2018
+Working with the django project, installing the required softwares for the project on centos7.
+As SQLite comes pre-installed with Python, have utilized MySQL instead of SQLite.
+Installing MySQL from the community repository. For this,
+>Downloaded the repository
+>Added the repository
+>And resolving the issues while updating the repository
+Also trobleshooting the issue that there was a problem importing one of the Python modules required to run yum.
+
+17/12/2018
+Updating the python version to the latest version by the following steps:
+Found the list of python 2 binaries available on the system by running as root
+Issued the command #find / -type f -executable -name 'python2*'
+Got the output looked like /usr/bin/python2.7, then ran /usr/bin/python2.7
+Now python prompt is opened, in that ran >> import yum
+Troubleshooting the attribute error: 'module' object has no attribute' when ran the above command
+(https://danieleriksson.net/2017/02/08/how-to-install-latest-python-on-centos/
+https://stackoverflow.com/questions/23589971/yum-not-working)
+
+18/12/2018
+Found what is the path that yum is using to run python by issuing the command #cat `which yum` | head -1
+Probably the output as #!/usr/bin/python and ran the command as a root user, ln -s /usr/bin/python2.x /usr/bin/python to replace the python2.x with the latest version.
+Downloading and installing python3 in CentOS via source code. For this,
+Downloaded main source code from the python.org website and extracted the archive file.
+Issued the following commands to compile and to install Python
+./configure --prefix=/usr/local --enable-shared LDFLAGS="-Wl,-rpath /usr/local/lib"
+make && make altinstall
+
+19/12/2018
+Uninstalled the python package and installed it again by issuing the commands for downloading, compiling and installing.
+Ran ./configure --enable-optimizations to release build with all stable optimizations active.
+Troubleshooting with the following issues in the process of working with the django project,
+> Update for yum
+> Update for python to its latest version
+
+20/12/2018
+Issued the command #make && make altinstall to update the python to its latest version
+zipimport.ZipImportError: can't decompress data; zlib not available
+make: *** [altinstall] Error 1
+Troubleshooting the above error by issuing the below commands,
+As I'm on CentOs, I installed zlib-dev #yum install zlib-devel.x86_64
+Now, made clean and installed zlib1g-dev and changed the configuration step:
+./configure --with-zlib=/usr/include
+
+21/12/2018
+Working with the issue yum update not working in the centos7
+Performed the below steps:
+>yum clean all 
+>yum clean metadata
+>Checked the files in /etc/yum.repos.d whether the file contains enable = 0
+>Modified all the files and made sure that all the files doesn't have enabled = 0 for each repo (also they are more than one per file).
+
+2/1/2019
+Working with the scenario Continuous Integration for IBM Integration Bus to Build, Deploy, Test, Code Coverage and Code Review.
+Going through the tutorials on continuous integrating IIB with jenkins.
+Got to know the architecture of Automated build and deploy - IBM IIB 
+Also getting to know about the Jenkins, GitHub, ANT and IBM Integration Bus Continuous Integration Life Cycle
+Verifying the required prerequisites are IBM Integration toolkit, Jenkins, GitRepository, Apache JMeter, Sonarqube
+
+3/1/2019
+Getting with the Typical Flow of Jenkins Build Job CI with Jenkins and IIB and different components involved in building a job like,
+Ant scripts and jenkins for auto build and deployment of the code components
+Apache JMeter to test plan and test case configuration and execution
+Code coverage for coverage analysis and Code review used to	do the automated review	of the code
+Reporting to send the reports to the developers (open source).
+
+4/1/2019
+Upgraded the jenkins version to the version i.e., Jenkins 2.150.1
+Working with the scenario SonarQube Integration with Jenkins for Code analysis
+Got to know about the use of SonarQube which is used for continuous code quality and continuous inspection.
+Troubleshooting the below issue after the jenkins upgrade,
+Jenkins root URL is empty but is required for the proper operation of Jenkins features like email notifications, PR status update, environment variables such as BUILD_URL.
+
+7/1/2019
+To integrate sonarqube with jenkins for analysing the code done with the following steps,
+I have logged into the jenkins account by providing respective credentials.
+Then I have searched for sonarqube plugin in jenkins dashboard by clicking manage jenkins and then manage plugins
+In the availble tab, filtered for the sonarqube plugin and installed it.
+Troubleshooting the configuration for sonarqube servers as unable to find its default properties.
+
+8/1/2019
+Successfully installed the plugin sonarqube scanner in the jenkins dashboard.
+Getting to know whether the plugins sonarqube and sonarqube scanner are same or not.
+Resolving the following issue for the default properties in,
+Verifying the configuration for sonarqube servers and their properties for environment variables.
+Enabled the checkbox for injecting SonarQube server configuration as build environment variables.	
+Configuring the job administrators to inject the SonarQube server configuration as environment variables in the build.
+
+9/1/2019
+Searched for and verifying the plugin that is apt for analysing the code.
+Updated the java version to get the required plugins in the jenkins dashboard.
+The sonarqube scanner plugin is available in the dashboard after updating the java to the latest version.
+Troubleshooting the configuration settings for the sonarqube server.
+Also working with the plugins and downloading them in different ways to get them into the jenkins console.
+
+10/1/2019
+Dowloaded the plugin from the web site and uploaded it in the jenkins dashboard,
+>By navigating to manage jenkins
+>And then navigated to the manage plugins
+>Moved to the Advanced tab and uploaded the downloaded plugin file.
+>Verifying for the plugin and its configurations.
+
+11/1/2019
+Installed the plugin but the properties in the configuration system are not manual - (SonarQube Scanner for Jenkins 2.8.1)
+Configured the global settings and paths by enabling the following properties of SonarQube server as build environment variables
+Name of the sonarqube server
+Server url and
+Aunthentication token
+Saved the above configuration and then the authentication token is automatically generated in its field.
+Verifying for the authentication token and the process it has been generated.
+
+14/1/2019
+Plugin centralized the configuration of SonarQube server connection details in Jenkins global configuration.
+Working with the following,
+To trigger SonarQube analysis from Jenkins using standard Jenkins Build Steps to trigger analysis with:
+SonarQube Scanner
+SonarQube Scanner for Maven
+(SonarQube Scanner for Mave)
+SonarScanner for MSBuild
+
+(https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Jenkins)
+
+15/1/2019
+Working with the scenario to trigger sonarqube for code analysis using the sonarqube scanner plugin from jenkins after installing the plugin.
+Created a free style project by providing the job details i.e., name of the job that is apt to the scenario.
+Provided the following details in the Source Code Management tab telling Jenkins to get the source code from git,
+Repository URL and
+Git credentials 
+Adding a build step for executing sonarqube scanner to check whether the build job will fail if the code does not compile or if any of the unit tests fail.
+
+16/1/2019
+Modified the configurations of sonarqube server url which is the mandatory while integrating it to jenkins.
+Creating a configuration file in the root directory of the project: sonar-project.properties which should have
+Must have a unique projectKey in a given SonarQube instance
+Also should contain the following
+> Project Name
+> Project Version
+> Source of the sonar project 
+(https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner)
+
+17/1/2019
+Configured the global tool configuration by configuring tools and locations with the sonarqube scanner details.
+Provided all the bulid properties to execute the sonarqube scanner.
+Applied all the changes and the configurations done for sonar project in the jenkins dashboard.
+Navigated to the project dashboard and the built the project.
+Troubleshooting the ERROR: Error fetching remote repo 'origin'
+
+18/1/2019
+Resolving the issue Error fetching remote repo 'origin' by updating the following,
+Provided the path to project properties
+Modified path to the source directory
+Updated the git repository url 
+Applied and saved such that the changes would effect and built the project.
+Troubleshooting the issue "unable to access the path error setting certificate verify locations.
+
+1234%abcdZ
+
+21/1/2019
+Going throught the tutorials and getting to know about the following,
+>Jenkins Pipeline
+>Jenkins File
+>Use Jenkins Pipeline
+Installed the plugin build pipeline to create pipeline jobs and verified whether is installed or not in the jenkins dashboard.
+Configuring a new pipeline job using build pipeline plugin and building it.
 
 
 
+Reference links:
+(https://www.youtube.com/watch?v=DTRfG_gMLeU)
+
+22/1/2019
+Firstly, working with the basic set up that is to delivery pipeline in jenkins.
+Created sample jobs in jenkins by selecting the type of jobs in the dashboard.
+Chaining the required jobs that are created in sequence.
+Configured the jobs by adding the upstream or downstream jobs based on the requirement.
+Also configured the jobs by adding build step Execute shell and provided the commands.
+(https://www.youtube.com/watch?v=ndLbn24OwQg - jenkins beginner tutorial)
+
+Verifying the built jobs whether working fine or not.
+Builded the jobs but the build was failed due to following issues,
+
+23/1/2019
+Built the jobs and the build was failed, verfying the console output.
+Troubleshooting the following issues,
+>The system cannot find the file specified and the command execution failed
+>Build step 'Execute shell' marked build as failure
+Resolved the issue by changing the build step to Executing windows batch command.
+Configured the jobs in a way to build after other projects are built inorder to maintain a sequence and form a chain.
+(Triggered the job only if build is stable)
+
+24/1/2019
+Installed the delivery pipeline plugin to visualize Delivery Pipelines i.e., Jobs with upstream/downstream dependencies.
+Added delivery pipeline view in jenkins and configuring the view.
+Provided the name of the component and the initial job name in pipeline section.
+Viewed the jobs present in the pipeline graphically and modified the settings by enabling the build, rebuilding the jobs, total time taken for the build, changed themes.
+Run and validated the jobs in the pipeline once again to see the effected changes after editing the settings.
+(ref: https://www.youtube.com/watch?v=ndLbn24OwQg)
+
+25/1/2019(https://www.guru99.com/jenkins-pipeline-tutorial.html)
+Doing the documentation on the following,
+What is jenkins pipeline
+What is continuous delivery pipeline
+Working of continuous delivery pipeline
+Use of jenkins pipeline and different terms used in the pipeline concepts.
+
+28/1/2019
+Doing the documentation on the scenario to setup the delivery pipeline
+Steps to install the delivery pipeline plugin 
+Explanation about delivery pipeline plugin 
+Steps to create the sample jobs of free style project type and configuring each job in the build environment
+Steps to run all the jobs and to test them working fine or not by verifying the conole output.
+ 
+30/1/2019
+Working on the documentation regarding the scenario setting up the delivery pipeline
+Steps to add upstream jobs for the SampleDeployJob
+Steps to add upstream jobs for the SampleTestJob
+Steps to create the sequence by chaining the required jobs
+Steps to run the sequnce of jobs and trigger the dependent jobs one after other.
+
+31/1/2019
+Working with the steps for documenting the steps for setting up the delivery pipeline
+Steps to add delivery pipeline view in jenkins.
+Steps to configure the view in jenkins.
+Steps to create a new view in jenkins dashboard.
+Steps to edit the view if it is already created in jenkins dashboard.
+
+Continuous Delivery pipelines, perfect for visualization on information radiators. Shows one or more delivery pipeline instances, based on traditional Jenkins jobs with upstream/downstream dependencies.
+
+
+
+[Created a new item MyFirstPipeline and selected the type of project it is from the jenkins dashboard.
+Getting to know how to configure jenkins in two different ways 
+>Scripted pipeline
+>Declarative pipeline]
+
+
+
+7731085560
+Avinash@18
+
+6302039923
+Sumani
+
+
+
+https://www.youtube.com/watch?v=Ihh3K00hV_k  ---> maven project
+
+
+#Required metadata
+Sonar.ProjectKey=Nimbu
+Sonar.ProjectName=Name
+Sonar.ProjectVersion=1.0
+
+#Path to source directory
+Sonar.Sources=/var/lib/jenkins/workspace/$JOB_NAME/Nimbu/src
+
+scenario:
+---------
+https://dzone.com/articles/code-analysis-part-2-analyzing-code-with-sonarqube - sonarqube with docker
+Develop your pipeline as code
+Build job pipeline in freestyle
+nd try to make pipeline
+sonar qube analysis maven based projects 
+
+
+amanpreetsingh0405
+
+
+running process of docker
+
+
+
+
+Configuring sonarqube on jenkins - https://www.youtube.com/watch?v=wukVEPa4d38
+
+SonarQube Integration with Jenkins for Code analysis - https://www.youtube.com/watch?v=jh7utASgKj4
+jenkins with iib 
+multi job pipieline - https://www.youtube.com/watch?v=UVYJCYo8tC0 (self learning)
+kubernetes
+
+
+
+
+(link: https://unix.stackexchange.com/questions/298110/centos-7-yum-install-not-working
+yum not working )
+
+devops - edureka
+
+
+
+
+ 
 Ran python program app.py 
 {docker compose build
 docker compose up
 run python program
 Use docker-compose up to start the system.}
-
+Zabcd@1234
 File "app.py", line 11
 web_1    |     app.run(host="172.17.0.1",debug=True)
 web_1    |     ^
 web_1    | IndentationError: unexpected indent            > changed the host ip
+
 
 
 
@@ -2136,7 +2554,6 @@ accessing directory structure properly
 check Ref: https://www.1and1.com/cloud-community/learn/web-server/nginx/solve-an-nginx-403-forbidden-error/
 
 
-
 (Ref: https://www.tutorialspoint.com/docker/docker_setting_nginx.htm > to create a sample html page and host it in the docker)
 (Ref: https://www.digitalocean.com/community/tutorials/how-to-run-nginx-in-a-docker-container-on-ubuntu-14-04 > continue the task)
 (Ref: https://stackoverflow.com/questions/23439126/how-to-mount-a-host-directory-in-a-docker-container > mounting a directory)
@@ -2162,12 +2579,15 @@ to mount a host directory into a Docker container so that any updates done on th
 Solve iib error in toolkit and console  > set environment variables for java path
 how and where to set the java path in env variables for iib installation??????
 
+
 (Ref: https://www.bogotobogo.com/DevOps/Docker/Docker_Nginx_WebServer.php
 https://hub.docker.com/_/nginx/)
 
 12949
 12899 50 tax
 12438 - 461 rps per day
+ 
+
 
 
 	
@@ -2305,7 +2725,7 @@ rebase indepth > https://wilsonmar.github.io/git-rebase/
 git reflog > https://www.atlassian.com/git/tutorials/rewriting-history
 git reflog --relative-date
 git bisect
-git reset --soft
+git reset --soft 
 git reset --hard
 git reset --mixed
 patch
@@ -2418,8 +2838,6 @@ https://www.cloudbees.com/blog/using-git-jenkins
 In your Jenkins Dashboard (Home screen), click the Manage Jenkins option on the left hand side.
 github branches in jenkins
 111111111111111111111111111111111
-
-
 -------------------------------------------------------------------------------------------------------------------
 
 
@@ -2453,7 +2871,7 @@ error: Could not fetch origin
 
 git config http.sslVerify false
 abcd@1234Z
-
+npwd - Zabcd@1234
 
 release management
 web server - apache 
@@ -2468,6 +2886,10 @@ pwd-Miracle@1
 224526 > kv
 NewPwd@1 > mss wifi pwd
 abcd@1234Z > mailcorp
+
+
+
+
 
 
 Business logic (IIB)
@@ -2493,6 +2915,8 @@ patient tracking. All of these systems should communicate with each other (or "i
 retrieve information, but not all do so.
 
 Patient data in the form of HL7 segments.
+
+
 
 Develop the Flows in IIB and implement the logic in eSQL Code based on the understanding of Pseudo Code provided.
 Configured SVN repository with Message Broker and daily check in and checkout / version control of the source code.
@@ -2529,6 +2953,18 @@ system. This flow is named as sender flow.
 
 The business logic will be implemented in esql language. And the communication between receives flow and transform flow is can be get accomplished by 
 Publication and subscription.
+
+--------------------
+
+projects:
+dev
+Christus is a service oriented approach in building integration solutions and to implement Enterprise Service Bus architecture. All the HL7 data coming from source application will also be mapped in Common Information Model (CIM) and as per the transformation needs using eSQL language and route it to destination applications.
+
+migration
+CHRISTUS is in the process of upgrading its integration platforms to establish next-Generation of integration capabilities, a service oriented approach in building integration solutions and to implement an Enterprise Service Bus architecture. All the HL7 transactions in the enterprise were taking place through the Cloverleaf. The responsibility was aimed at replacing 625 interfaces running on these Cloverleaf and migrate them to a more robust engine built on MQ Series and IIB technologies. All the HL7 data coming from source application will also be mapped in Common Information Model (CIM) and as per the transformation needs using eSQL language and route it to destination applications.
+
+2nd di tcl use chesi code rasinatlu i mean migration
+1st one mapping pecs use chesi development chesinatlu
 
 --------------------------------------------------------------------------------------------------------------
 
@@ -2828,15 +3264,45 @@ Pulled redis image and created two instances of redis
 docker run -d --name redis_server redis:latest
 docker run -d --name redis_client redis:latest
 need to link these two containers using docker compose tool
-
-
-
-
-
-
-
-
-
-
-
 (ref: https://blog.codeship.com/orchestrate-containers-for-development-with-docker-compose/)
+
+
+
+docker exec -it  99757ee11843 /bin/bash
+rpc error: code = 2 desc = oci runtime error: exec failed: container_linux.go:247: starting container process caused "exec: \"/bin/bash\": stat /bin/bash: no such file or directory"
+
+about ai
+about ml 
+
+
+jan  (4 days - 1cl)
+feb 
+mar
+apr - 1 cl
+may - 1 cl
+june - (3 days - 3cls) 
+july
+aug
+sept (4 days - 3cls)
+oct
+nov (3 days - 2 cls)
+dec (4 days - 1 cl)
+
+12 + 8 (extra leaves > bak pain,dental surgery and grandpa)
+
+3 + 1 -> unexpected 
+
+Hi Satyanesh/team,
+
+Please be informed that I am submitting this letter for the purpose of resigning from the post of "Software Developer" at Miracle Software Systems. The effective date of my resignation will be from 7th January 2019.
+
+I would like to thank for giving an opportunity to work for Miracle Software Systems and grow as a professional. Special thanks for the support you have provided me and the opportunities you have given me to enhance my skills.
+
+Thanks again for a wonderful working at Miracle Software Systems.
+
+Thanks & Regards
+-------------
+
+30/1 - 30
+31/1 - 30
+1/2 - 
